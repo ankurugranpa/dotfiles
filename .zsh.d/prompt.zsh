@@ -4,13 +4,13 @@ PROMPT='%n@%h
 
 #vimライクなコマンドラインにする設定
 bindkey -v
-
+#モード表示のスクリプト
 PROMPT_INS="%{${fg[blue]}%}[%n@%m] %~%{${reset_color}%}
 [INSERT]$ "
 PROMPT_NOR="%{${fg[blue]}%}[%n@%m] %~%{${reset_color}%}
 [NORMAL]$ "
 PROMPT_VIS="%{${fg[blue]}%}[%n@%m] %~%{${reset_color}%}
-[VIS]$ "
+[VISUAL]$ "
 
 PROMPT=$PROMPT_INS
 
