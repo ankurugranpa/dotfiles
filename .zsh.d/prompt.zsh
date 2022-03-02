@@ -1,15 +1,18 @@
+#カラーコードの追加
+autoload -Uz colors
+colors
 #プロンプト設定
-PROMPT='%n@%h
-[%d]#'
+#PROMPT="$%n@%h
+#[%d]#"
 
 #vimライクなコマンドラインにする設定
 bindkey -v
 #モード表示のスクリプト
-PROMPT_INS="%{${fg[blue]}%}[%n@%m] %~%{${reset_color}%}
---INSERT--$ "
-PROMPT_NOR="%{${fg[blue]}%}[%n@%m] %~%{${reset_color}%}
+PROMPT_INS="${fg[green]}%n${reset_color}|%~
+--INSERT-$ "
+PROMPT_NOR="%{${fg[green]}%}[%n@%m] %~%{${reset_color}%}
 --NORMAL--$ "
-PROMPT_VIS="%{${fg[blue]}%}[%n@%m] %~%{${reset_color}%}
+PROMPT_VIS="%{${fg[green]}%}[%n@%m] %~%{${reset_color}%}
 --VISUAL--$ "
 
 PROMPT=$PROMPT_INS
