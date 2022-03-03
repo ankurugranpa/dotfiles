@@ -7,12 +7,12 @@ colors
 
 #vimライクなコマンドラインにする設定
 bindkey -v
-#モード表示のスクリプト
+#PROMPTの表示設定
 PROMPT_INS="${fg[green]}%n${reset_color}|%~
---INSERT-$ "
-PROMPT_NOR="%{${fg[green]}%}[%n@%m] %~%{${reset_color}%}
+--INSERT--$ "
+PROMPT_NOR="${fg[green]}%n${reset_color}|%~
 --NORMAL--$ "
-PROMPT_VIS="%{${fg[green]}%}[%n@%m] %~%{${reset_color}%}
+PROMPT_VIS="${fg[green]}%n${reset_color}|%~
 --VISUAL--$ "
 
 PROMPT=$PROMPT_INS
