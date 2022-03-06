@@ -7,7 +7,7 @@ fi
 
 if [ $1 = -arch ]; then
 	SHELL_TYPE=1
-elif[ $1 = -ubuntu ]; then
+elif [ $1 = -ubuntu ]; then
 	SHELL_TYPE=2
 fi
 
