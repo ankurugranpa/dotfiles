@@ -5,10 +5,10 @@ if [ $# -ne 1 ]; then
 	exit 1
 fi
 
-if [ $1 == -arch ]; then
-	$SHELL_TYPE=1
-elif[ $1 == -ubuntu ]; then
-	$SHELL_TYPE=2
+if [ $1 = -arch ]; then
+	SHELL_TYPE=1
+elif[ $1 = -ubuntu ]; then
+	SHELL_TYPE=2
 fi
 
 
