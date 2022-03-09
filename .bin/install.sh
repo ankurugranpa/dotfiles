@@ -13,31 +13,31 @@ fi
 
 
 #backupファイルの作成
-if [ -e ~/backup ]; then
+if [ -e $HOME/backup ]; then
 	echo "exist backupfile"
 else
 	echo "making backupfaile"
-	mkdir ~/backup
+	mkdir $HOME/backup
 fi
 #バックアップファイル内に作業ファイルを作成する
 #何らかのことがあったときのためファイルは日時で管理する
-backup=~/backup/$(date +%Y%m%d%H%W)
+backup=$HOME/backup/$(date +%Y%m%d%H%W)
 mkdir $backup
 #install_file.txtファイル内に記述されたファイルの存在確認
 #ファイルが存在した場合は場はbackupに格納する
 #シンボリックリンクを作成する
 while read line
 do
-	FILE=~/$line
+	FILE=$HOME/$line
         if [ -e $FILE ]; then
 		echo "$lineは存在しました"
 		mv $FILE $backup/$line
-	        ln -s ~/dotfiles/$line $FILE		
+	        ln -s $HOME/dotfiles/$line $FILE		
         else
 	        echo "$lineは存在しませんでした"	
-	        ln -s ~/dotfiles/$line $FILE
+	        ln -s $HOME/dotfiles/$line $FILE
 	fi
-done < ~/dotfiles/install_file.txt
+done < $HOME/dotfiles/.bin/install_file.txt
 
 #ubuntuの場合ログインシェルを変更する
 if [ $SHELL_TYPE==2 ]; then
