@@ -2,12 +2,12 @@ zsh用
 自分用に作成  
 これから色々追加していく予定
 
+zsh上でbashを使用して実行してください
+
 #インストール方法:
 .binの中にあるinstall.shを実行  
 オプションをつけなければならない  
--arch :on archlinx  
--ubuntu :on ubuntu  
-
+denoもインストール:-deno
 #今後のためのメモ
 vimplugのインストール  
 zplugのインストール  
