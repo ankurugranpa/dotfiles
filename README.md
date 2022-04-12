@@ -4,14 +4,10 @@ zsh用
 
 zsh上でbashを使用して実行してください
 
-how to use 
-bash ./install.sh
-denoを入れたいときは　-deno オプションがある
-
 #インストール方法:
 .binの中にあるinstall.shを実行  
-オプションをつけなければならない  
-denoもインストール:-deno
+bash ./install.sh
+denoを入れたいときは　-deno オプションがある
 #今後のためのメモ
 vimplugのインストール  
 zplugのインストール  
