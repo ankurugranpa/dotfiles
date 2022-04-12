@@ -4,7 +4,7 @@ zsh用
 
 zsh上でbashを使用して実行してください
 
-how to use /n
+how to use \n
 bash ./install.sh
 denoを入れたいときは　-deno オプションがある
 
