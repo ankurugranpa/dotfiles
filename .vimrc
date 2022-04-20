@@ -3,6 +3,7 @@ set incsearch
 set encoding=utf-8
 set number
 
+
 call plug#begin('~/.vim/plugged')
 Plug 'prabirshrestha/vim-lsp'
 Plug 'mattn/vim-lsp-settings'
@@ -22,6 +23,9 @@ Plug 'Shougo/ddc-matcher_head'
 Plug 'Shougo/ddc-sorter_rank'
 " 補完候補の重複を防ぐためのfilter
 Plug 'Shougo/ddc-converter_remove_overlap'
+"オートコンプリート
+"Plug 'prabirshrestha/asyncomplete.vim'
+"Plug 'prabirshrestha/asyncomplete-lsp.vim'
 call plug#end()
 
 call plug#('Shougo/ddc.vim')
@@ -76,6 +80,6 @@ nmap <F6> :Gcc<CR>
 
 function! s:Gcc()
 	:w
-		:!gcc % -o %.out
+		:!gcc -Wall % -o %.out -lm
 		:!./%.out
 		endfunction
