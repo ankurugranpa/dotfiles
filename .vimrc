@@ -61,3 +61,21 @@ call ddc#custom#patch_global('sourceOptions', {
 call ddc#enable()
 inoremap <Tab> <Cmd>call pum#map#insert_relative(+1)<CR>
 inoremap <S-Tab> <Cmd>call pum#map#insert_relative(-1)<CR>
+
+"pythonの実行
+command! Python call s:Python()
+nmap <F5> :Python<CR>
+
+function! s:Python()
+        :w
+	        :!python %
+		endfunction
+"C言語
+command! Gcc call s:Gcc()
+nmap <F6> :Gcc<CR>
+
+function! s:Gcc()
+	:w
+		:!gcc % -o %.out
+		:!./%.out
+		endfunction
