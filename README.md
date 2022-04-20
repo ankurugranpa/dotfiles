@@ -6,8 +6,8 @@ zsh上でbashを使用して実行してください
 
 #インストール方法:
 .binの中にあるinstall.shを実行  
-オプションをつけなければならない  
-denoもインストール:-deno
+bash ./install.sh
+denoを入れたいときは　-deno オプションがある
 #今後のためのメモ
 vimplugのインストール  
 zplugのインストール  
