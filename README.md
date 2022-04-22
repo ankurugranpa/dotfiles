@@ -1,7 +1,7 @@
 # zsh用のdotfiles
 ## 導入の仕方  
 dotfilesをルートディレクトリに配置   
-`git clone https://github.com/ankurugranpa/dotfiles.git`
+`git clone https://github.com/ankurugranpa/dotfiles.git`  
 dotfiles/.binに移動するその後インストーラーの実行  
 `bash ./install.sh`  
 ## 依存関系   
