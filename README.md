@@ -2,7 +2,7 @@
 ## 導入の仕方  
 dotfilesをルートディレクトリに配置   
 `git clone https://github.com/ankurugranpa/dotfiles.git`  
-dotfiles/.binに移動するその後インストーラーの実行  
+dotfiles/.binに移動するその後インストーラーの実行(`curl`がインストールされていない場合は先に`curl`をインストール)
 `bash ./install.sh`  
 ## 依存関系   
 [zplug](https://github.com/zplug/zplug)  
