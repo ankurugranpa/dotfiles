@@ -1,9 +1,11 @@
 # zsh用のdotfiles
 ## 導入の仕方  
-dotfileをリポジトリから持ってくる  
-' git clone https://github.com/ankurugranpa/dotfiles.git '   
+dotfilesをルートディレクトリに配置  
+'git clone https://github.com/ankurugranpa/dotfiles.git'
 dotfiles/.binに移動するその後インストーラーの実行  
-' cd dotfiles/.bin  
-bash ./install.sh'  
+'bash ./install.sh'  
 ## 依存関系   
- vim-lsp vim-lsp-setting  vim-plug zplug
+[zplug](https://github.com/zplug/zplug)  
+[vim-plug](https://github.com/junegunn/vim-plug)  
+[vim-lsp](https://github.com/prabirshrestha/vim-lsp)  
+[vim-lsp-setting](https://github.com/mattn/vim-lsp-settings)
