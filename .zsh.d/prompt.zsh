@@ -4,15 +4,14 @@ colors
 #プロンプト設定
 #PROMPT="$%n@%h
 #[%d]#"
-
 #vimライクなコマンドラインにする設定
 bindkey -v
 #PROMPTの表示設定
-PROMPT_INS="${fg[green]}%n${reset_color}|%~
+PROMPT_INS="${fg[green]}%n${reset_color}$(what-venv)|%~
 --INSERT--$ "
-PROMPT_NOR="${fg[green]}%n${reset_color}|%~
+PROMPT_NOR="${fg[green]}%n${reset_color}$WHATVENV|%~
 --NORMAL--$ "
-PROMPT_VIS="${fg[green]}%n${reset_color}|%~
+PROMPT_VIS="${fg[green]}%n${reset_color}$WHAT_VENV|%~
 --VISUAL--$ "
 
 PROMPT=$PROMPT_INS
@@ -50,8 +49,16 @@ function zle-keymap-select zle-line-init {
 zle -N zle-line-init
 zle -N zle-keymap-select
 zle -N zle-line-pre-redraw
+#venvの設定
+function what-venv {
 
+  if [ -n "$VIRTUAL_ENV" ]; then
+  	echo "(venv:${VIRTUAL_ENV##*/})"
+  fi
+  
+}
 # ここら下はbranch名を表示させるメソッドの設定-----------------------------
+
 function rprompt-git-current-branch {
   local branch_name st branch_status
 
