@@ -1,0 +1,1 @@
+/home/ahahahaha/dotfiles/.zsh.d

@@ -7,11 +7,11 @@ colors
 #vimライクなコマンドラインにする設定
 bindkey -v
 #PROMPTの表示設定
-PROMPT_INS="${fg[green]}%n${reset_color}$(what-venv)|%~
+PROMPT_INS="${fg[green]}%n${reset_color}|%~
 --INSERT--$ "
-PROMPT_NOR="${fg[green]}%n${reset_color}$WHATVENV|%~
+PROMPT_NOR="${fg[green]}%n${reset_color}|%~
 --NORMAL--$ "
-PROMPT_VIS="${fg[green]}%n${reset_color}$WHAT_VENV|%~
+PROMPT_VIS="${fg[green]}%n${reset_color}|%~
 --VISUAL--$ "
 
 PROMPT=$PROMPT_INS
