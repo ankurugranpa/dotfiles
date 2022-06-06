@@ -8,3 +8,5 @@ if [ -d $ZSH_DIR ] && [ -r $ZSH_DIR ] && [ -x $ZSH_DIR ]; then
         [ -r $file ] && source $file
     done
 fi
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
