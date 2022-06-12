@@ -6,13 +6,23 @@ colors
 #[%d]#"
 #vimライクなコマンドラインにする設定
 bindkey -v
-#PROMPTの表示設定
+#PROMPTの表示設定(一般ユーザーの時)
 PROMPT_INS="${fg[green]}%n${reset_color}|%~
 --INSERT--$ "
 PROMPT_NOR="${fg[green]}%n${reset_color}|%~
 --NORMAL--$ "
 PROMPT_VIS="${fg[green]}%n${reset_color}|%~
 --VISUAL--$ "
+
+if [ ${UID} -eq 0 ]; then
+  #PROMPTの表示設定(rootユーザーの時)
+  PROMPT_INS="${fg[green]}%n${reset_color}|%~
+  --INSERT--$ "
+  PROMPT_NOR="${fg[green]}%n${reset_color}|%~
+  --NORMAL--$ "
+  PROMPT_VIS="${fg[green]}%n${reset_color}|%~
+  --VISUAL--$ "
+fi
 
 PROMPT=$PROMPT_INS
 
