@@ -10,3 +10,6 @@ dotfiles/.binに移動するその後インストーラーの実行
 [vim-plug](https://github.com/junegunn/vim-plug)  
 [vim-lsp](https://github.com/prabirshrestha/vim-lsp)  
 [vim-lsp-setting](https://github.com/mattn/vim-lsp-settings)
+
+fow WSL 
+[Vdesk](https://github.com/eksime/VDesk)
