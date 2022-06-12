@@ -77,7 +77,7 @@ nmap <F5> :Python<CR>
 
 function! s:Python()
         :w
-	        :!python %
+	        :!python3 %
 		endfunction
 "C言語
 command! Gcc call s:Gcc()
