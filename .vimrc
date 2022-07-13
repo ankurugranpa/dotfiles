@@ -2,7 +2,7 @@ set hlsearch
 set incsearch
 set encoding=utf-8
 set number
-
+# いええい見てるう？
 
 call plug#begin('~/.vim/plugged')
 Plug 'prabirshrestha/vim-lsp'
