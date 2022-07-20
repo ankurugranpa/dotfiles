@@ -30,6 +30,7 @@ Plug 'mattn/vim-lsp-settings'
 ""オートコンプリート
 Plug 'prabirshrestha/asyncomplete.vim'
 Plug 'prabirshrestha/asyncomplete-lsp.vim'
+Plug 'lambdalisue/fern.vim'
 call plug#end()
 "
 "call plug#('Shougo/ddc.vim')
