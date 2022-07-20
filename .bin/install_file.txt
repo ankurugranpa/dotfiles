@@ -2,3 +2,4 @@
 .vimrc  
 .zsh.d
 .zshrc
+.config

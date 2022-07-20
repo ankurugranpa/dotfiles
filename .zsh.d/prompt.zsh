@@ -7,25 +7,24 @@ colors
 #vimライクなコマンドラインにする設定
 bindkey -v
 #PROMPTの表示設定(一般ユーザーの時)
-PROMPT_INS="${fg[green]}%n${reset_color}|%~
---INSERT--$ "
-PROMPT_NOR="${fg[green]}%n${reset_color}|%~
---NORMAL--$ "
-PROMPT_VIS="${fg[green]}%n${reset_color}|%~
---VISUAL--$ "
+PROMPT_INS='${fg[green]}%n${reset_color}${what_venv}|%~
+--INSERT--$' 
+PROMPT_NOR='${fg[green]}%n${reset_color}|%~
+--NORMAL--$ '
+PROMPT_VIS='${fg[green]}%n${reset_color}|%~
+--VISUAL--$' 
 
 if [ ${UID} -eq 0 ]; then
   #PROMPTの表示設定(rootユーザーの時)
-  PROMPT_INS="${fg[green]}%n${reset_color}|%~
-  --INSERT--$ "
-  PROMPT_NOR="${fg[green]}%n${reset_color}|%~
-  --NORMAL--$ "
-  PROMPT_VIS="${fg[green]}%n${reset_color}|%~
-  --VISUAL--$ "
+  PROMPT_INS='(root)${fg[green]}%n${reset_color}|%~
+  --INSERT--$'
+  PROMPT_NOR='(root)${fg[green]}%n${reset_color}|%~
+  --NORMAL--$'
+  PROMPT_VIS='(root)${fg[green]}%n${reset_color}|%~
+  --VISUAL--$'
 fi
 
 PROMPT=$PROMPT_INS
-
 function zle-line-pre-redraw {
   if [[ $REGION_ACTIVE -ne 0 ]]; then
     NEW_PROMPT=$PROMPT_VIS
@@ -56,17 +55,22 @@ function zle-keymap-select zle-line-init {
   zle reset-prompt
 }
 
+function what_venv {
+	if [[ -n $VIRTUAL_ENV ]];then
+		echo "(${VIRTUAL_ENV##*/})"
+	else
+		echo "ないです"
+	fi
+
+	zle reset-prompt
+}
+
+
+
 zle -N zle-line-init
 zle -N zle-keymap-select
 zle -N zle-line-pre-redraw
-#venvの設定
-function what-venv {
-
-  if [ -n "$VIRTUAL_ENV" ]; then
-  	echo "(venv:${VIRTUAL_ENV##*/})"
-  fi
-  
-}
+zle -N what_venv
 # ここら下はbranch名を表示させるメソッドの設定-----------------------------
 
 function rprompt-git-current-branch {

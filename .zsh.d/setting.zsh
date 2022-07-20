@@ -18,5 +18,10 @@ setopt EXTENDED_HISTORY
 # historyコマンドは履歴に登録しない
 setopt hist_no_store
 
+# PATH
 export EDITOR=vim
+export XDG_CONFIG_HOME=~/.config/
+export PATH=$PATH:~/dotfiles/mybin
 
+# alias
+alias vim='nvim'

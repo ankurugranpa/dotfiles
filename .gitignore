@@ -7,3 +7,5 @@
 !/.bin
 !/.vim
 !/README.md
+!/.config
+!/mybin**
