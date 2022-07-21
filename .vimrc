@@ -2,6 +2,8 @@ set hlsearch
 set incsearch
 set encoding=utf-8
 set number
+"" Frenの設定
+nnoremap <C-n> :Fern . -reveal=% -drawer -toggle -width=40<CR>
 
 if !has('nvim')
 	set ttymouse=xterm2
