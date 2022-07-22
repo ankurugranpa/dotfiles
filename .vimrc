@@ -2,17 +2,18 @@ set hlsearch
 set incsearch
 set encoding=utf-8
 set number
-"" Frenの設定
-nnoremap <C-n> :Fern . -reveal=% -drawer -toggle -width=40<CR>
 
+"" nvimの設定
 if !has('nvim')
 	set ttymouse=xterm2
 endif
 
-
 call plug#begin('~/.vim/plugged')
+
+"" vim-lsp周りのインストール
 Plug 'prabirshrestha/vim-lsp'
 Plug 'mattn/vim-lsp-settings'
+
 "" ddc.vim本体
 "Plug 'Shougo/ddc.vim'
 "" DenoでVimプラグインを開発するためのプラグイン
@@ -29,11 +30,23 @@ Plug 'mattn/vim-lsp-settings'
 "Plug 'Shougo/ddc-sorter_rank'
 "" 補完候補の重複を防ぐためのfilter
 "Plug 'Shougo/ddc-converter_remove_overlap'
+
 ""オートコンプリート
 Plug 'prabirshrestha/asyncomplete.vim'
 Plug 'prabirshrestha/asyncomplete-lsp.vim'
+
+"" fernのインストール
 Plug 'lambdalisue/fern.vim'
+
+"" nerd fonts周りの設定用
+Plug 'lambdalisue/nerdfont.vim'
+Plug 'lambdalisue/fern-renderer-nerdfont.vim'
 call plug#end()
+
+"" fern周りの設定
+let g:fern#renderer = 'nerdfont'
+let g:fern#default_hidden=1
+nnoremap <C-n> :Fern . -reveal=% -drawer -toggle -width=40<CR>
 "
 "call plug#('Shougo/ddc.vim')
 "call plug#('vim-denops/denops.vim')
