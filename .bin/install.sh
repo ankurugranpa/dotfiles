@@ -42,7 +42,7 @@ if [ $1 = -deno]; then
 fi
 
 # nvimのインストール
-if !(type "コマンド" > /dev/null 2>&1); then
+if !(type "nvim" > /dev/null 2>&1); then
 	curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
 	chmod u+x nvim.appimage
 	mv nvim.appimage ~/dotfiles/mybin/nvim
