@@ -19,9 +19,13 @@ setopt EXTENDED_HISTORY
 setopt hist_no_store
 
 # PATH
+# デフォルトのエディタ
 export EDITOR=vim
+# NeoVim用のpath
 export XDG_CONFIG_HOME=~/.config/
 export PATH=$PATH:~/dotfiles/mybin
-
+# Deno用
+export DENO_INSTALL="/$HOME/.deno"
+export PATH="$DENO_INSTALL/bin:$PATH"
 # alias
 alias vim='nvim'

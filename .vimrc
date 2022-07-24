@@ -46,7 +46,7 @@ call plug#end()
 "" fern周りの設定
 let g:fern#renderer = 'nerdfont'
 let g:fern#default_hidden=1
-nnoremap <C-n> :Fern . -reveal=% -drawer -toggle -width=40<CR>
+nnoremap <C-n> :Fern . -reveal=% -drawer -toggle -width=30<CR>
 "
 "call plug#('Shougo/ddc.vim')
 "call plug#('vim-denops/denops.vim')
