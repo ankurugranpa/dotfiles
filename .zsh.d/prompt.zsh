@@ -7,11 +7,11 @@ colors
 #vimライクなコマンドラインにする設定
 bindkey -v
 #PROMPTの表示設定(一般ユーザーの時)
-PROMPT_INS='${fg[green]}%n${reset_color}${what_venv}|%~
+PROMPT_INS='${fg[green]}%n${reset_color}`python_venv`|%~
 --INSERT--$' 
-PROMPT_NOR='${fg[green]}%n${reset_color}|%~
+PROMPT_NOR='${fg[green]}%n${reset_color}`python_venv`|%~
 --NORMAL--$ '
-PROMPT_VIS='${fg[green]}%n${reset_color}|%~
+PROMPT_VIS='${fg[green]}%n${reset_color}`python_venv`|%~
 --VISUAL--$' 
 
 if [ ${UID} -eq 0 ]; then
@@ -23,6 +23,13 @@ if [ ${UID} -eq 0 ]; then
   PROMPT_VIS='(root)${fg[green]}%n${reset_color}|%~
   --VISUAL--$'
 fi
+#venvのステータス表示
+function python_venv {
+	if [ -n "$VIRTUAL_ENV" ]; then
+		PYTHON_VENV_STATUS="(`basename "$VIRTUAL_ENV"`)"
+		echo $PYTHON_VENV_STATUS
+	fi
+}
 
 PROMPT=$PROMPT_INS
 function zle-line-pre-redraw {
@@ -53,16 +60,6 @@ function zle-keymap-select zle-line-init {
     ;;
   esac
   zle reset-prompt
-}
-
-function what_venv {
-	if [[ -n $VIRTUAL_ENV ]];then
-		echo "(${VIRTUAL_ENV##*/})"
-	else
-		echo "ないです"
-	fi
-
-	zle reset-prompt
 }
 
 
