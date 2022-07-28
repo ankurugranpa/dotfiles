@@ -3,6 +3,10 @@ set incsearch
 set encoding=utf-8
 set number
 
+"" bafferの切り替え設定
+nnoremap <silent> <C-j> :bprev<CR>
+nnoremap <silent> <C-k> :bnext<CR>
+
 "" nvimの設定
 if !has('nvim')
 	set ttymouse=xterm2
@@ -13,6 +17,10 @@ call plug#begin('~/.vim/plugged')
 "" vim-lsp周りのインストール
 Plug 'prabirshrestha/vim-lsp'
 Plug 'mattn/vim-lsp-settings'
+
+"" fzf for vim
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 
 "" ddc.vim本体
 "Plug 'Shougo/ddc.vim'
