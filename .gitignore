@@ -10,3 +10,4 @@
 !/.config**
 !/.config/nvim
 !/mybin**
+!/mybin/tracking
