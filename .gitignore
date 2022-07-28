@@ -8,4 +8,5 @@
 !/.vim
 !/README.md
 !/.config**
+!/.config/nvim
 !/mybin**
