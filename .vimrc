@@ -2,6 +2,7 @@ set hlsearch
 set incsearch
 set encoding=utf-8
 set number
+set autochdir
 
 "" bafferの切り替え設定
 nnoremap <silent> <C-j> :bprev<CR>
