@@ -117,3 +117,12 @@ function! s:Gcc()
 		:!gcc -Wall % -o %.out -lm
 		:!./%.out
 		endfunction
+
+command! Cplus call s:Cplus()
+nmap <F7> :Cplus<CR>
+
+function! s:Cplus()
+	:w
+		:!g++ -Wall -o %.out %
+		:!./%.out
+		endfunction
