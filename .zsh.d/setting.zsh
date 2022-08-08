@@ -23,7 +23,7 @@ setopt hist_no_store
 export EDITOR=vim
 # NeoVim用のpath
 export XDG_CONFIG_HOME=~/.config/
-"" 自作コマンドの補完ディレクトリ
+# 自作コマンドの補完ディレクトリ
 export PATH=$PATH:~/dotfiles/mybin
 # Deno用
 export DENO_INSTALL="/$HOME/.deno"
