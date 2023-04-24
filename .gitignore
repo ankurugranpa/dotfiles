@@ -1,4 +1,5 @@
 /*
+/.**
 
 !/.zshrc
 !/.zsh.d
@@ -9,5 +10,6 @@
 !/README.md
 !/.config/**
 !/.config/nvim
-!/mybin**
+/mybin/**
 !/mybin/tracking
+/.zsh.d/local.zsh
