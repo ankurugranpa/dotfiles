@@ -7,7 +7,7 @@
 !/.bin
 !/.vim
 !/README.md
-!/.config**
+!/.config/**
 !/.config/nvim
 !/mybin**
 !/mybin/tracking

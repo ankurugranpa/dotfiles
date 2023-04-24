@@ -7,20 +7,20 @@ colors
 #vimライクなコマンドラインにする設定
 bindkey -v
 #PROMPTの表示設定(一般ユーザーの時)
-PROMPT_INS='${fg[green]}%n${reset_color}`python_venv`|%~
+PROMPT_INS='${fg[green]}%n${reset_color}`python_venv``conda_env`|%~
 --INSERT--$' 
-PROMPT_NOR='${fg[green]}%n${reset_color}`python_venv`|%~
+PROMPT_NOR='${fg[green]}%n${reset_color}`python_venv``conda_env`|%~
 --NORMAL--$ '
-PROMPT_VIS='${fg[green]}%n${reset_color}`python_venv`|%~
+PROMPT_VIS='${fg[green]}%n${reset_color}`python_venv``conda_env`|%~
 --VISUAL--$' 
 
 if [ ${UID} -eq 0 ]; then
   #PROMPTの表示設定(rootユーザーの時)
-  PROMPT_INS='(root)${fg[green]}%n${reset_color}|%~
+  PROMPT_INS='(root)${fg[green]}%n${reset_color}`python_venv``conda_env`|%~
   --INSERT--$'
-  PROMPT_NOR='(root)${fg[green]}%n${reset_color}|%~
+  PROMPT_NOR='(root)${fg[green]}%n${reset_color}`python_venv``conda_env`|%~
   --NORMAL--$'
-  PROMPT_VIS='(root)${fg[green]}%n${reset_color}|%~
+  PROMPT_VIS='(root)${fg[green]}%n${reset_color}`python_venv``conda_env`|%~
   --VISUAL--$'
 fi
 #venvのステータス表示
@@ -28,6 +28,11 @@ function python_venv {
 	if [ -n "$VIRTUAL_ENV" ]; then
 		PYTHON_VENV_STATUS="(`basename "$VIRTUAL_ENV"`)"
 		echo $PYTHON_VENV_STATUS
+	fi
+}
+function conda_env {
+	if [ -n "$CONDA_PROMPT_MODIFIER" ]; then
+		echo $CONDA_PROMPT_MODIFIER
 	fi
 }
 

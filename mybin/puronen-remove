@@ -1,0 +1,14 @@
+#/usr/bin/bash
+FILE=$(date "+%Y%m%d%H%M%S")
+# 最初の列を消す作業
+LINE=$(cat $1 | wc -l)
+CUTNUM=$(echo ${#LINE}+2 | bc )
+cp $1 $FILE
+cut -b $CUTNUM- $FILE > $1
+# 置換作業
+sed -i 's/、 /, /g' $1
+sed -i 's/”/"/g' $1
+sed -i 's/“/"/g' $1
+sed -i 's/、/,/g' $1
+sed -i 's/¥/\\/g' $1
+rm $FILE

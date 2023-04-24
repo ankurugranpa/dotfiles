@@ -2,11 +2,13 @@ set hlsearch
 set incsearch
 set encoding=utf-8
 set number
-set autochdir
+set hidden
 
 "" bafferの切り替え設定
 nnoremap <silent> <C-j> :bprev<CR>
 nnoremap <silent> <C-k> :bnext<CR>
+noremap j gj
+noremap k gk
 
 "" nvimの設定
 if !has('nvim')
@@ -22,6 +24,9 @@ Plug 'mattn/vim-lsp-settings'
 "" fzf for vim
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
+"" tex for vim 
+" A Vim Plugin for Lively Previewing LaTeX PDF Output
+" Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }
 
 "" ddc.vim本体
 "Plug 'Shougo/ddc.vim'
@@ -109,20 +114,39 @@ function! s:Python()
 	        :!python3 %
 		endfunction
 "C言語
-command! Gcc call s:Gcc()
-nmap <F6> :Gcc<CR>
+" nmap <F6> :terminal gcc -Wall % -o %.out -lm &&  ./%.out
 
-function! s:Gcc()
-	:w
-		:!gcc -Wall % -o %.out -lm
-		:!./%.out
+ command! Gcc call s:Gcc()
+ nmap <F6> :Gcc<CR>
+ 
+ function! s:Gcc()
+ 	:w
+ 		:!gcc -Wall % -o %.out -lm
+ 		" :./%.out
+ 		endfunction
+ 
+ command! Cplus call s:Cplus()
+ nmap <F7> :Cplus<CR>
+ 
+ function! s:Cplus()
+ 	:w
+ 		:!g++ -Wall -o %.out %
+ 		:!./%.out
+ 		endfunction
+"tex2pdfの実行
+command! Tex call s:Tex()
+nmap <F8> :Tex<CR>
+
+function! s:Tex()
+        :w
+	        :!platex %
+		:!dvipdfmx $(basename % .tex)
+		:!rm $(basename % .tex).{aux,log,ps,dvi}
 		endfunction
+command! Pdf call s:Pdf()
+nmap <F9> :Pdf<CR>
 
-command! Cplus call s:Cplus()
-nmap <F7> :Cplus<CR>
-
-function! s:Cplus()
-	:w
-		:!g++ -Wall -o %.out %
-		:!./%.out
+function! s:Pdf()
+        :w
+		:!explorer.exe $(basename % .tex).pdf
 		endfunction
