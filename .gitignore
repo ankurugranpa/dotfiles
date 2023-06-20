@@ -8,8 +8,7 @@
 !/.bin
 !/.vim
 !/README.md
-/.config/**
-!/.config/nvim
+/.config/** 
 /mybin/**
 !/mybin/tracking
 /.zsh.d/local.zsh
