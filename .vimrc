@@ -27,6 +27,8 @@ Plug 'junegunn/fzf.vim'
 "" tex for vim 
 " A Vim Plugin for Lively Previewing LaTeX PDF Output
 " Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }
+"" github copilot
+Plug 'github/copilot.vim'
 
 "" ddc.vim本体
 "Plug 'Shougo/ddc.vim'
@@ -133,20 +135,3 @@ function! s:Python()
  		:!g++ -Wall -o %.out %
  		:!./%.out
  		endfunction
-"tex2pdfの実行
-command! Tex call s:Tex()
-nmap <F8> :Tex<CR>
-
-function! s:Tex()
-        :w
-	        :!platex %
-		:!dvipdfmx $(basename % .tex)
-		:!rm $(basename % .tex).{aux,log,ps,dvi}
-		endfunction
-command! Pdf call s:Pdf()
-nmap <F9> :Pdf<CR>
-
-function! s:Pdf()
-        :w
-		:!explorer.exe $(basename % .tex).pdf
-		endfunction
