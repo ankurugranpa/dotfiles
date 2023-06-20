@@ -5,7 +5,7 @@
 !/.zsh.d
 !/.vimrc
 !/.gitignore
-!/.bin
+!/.installer
 !/.vim
 !/README.md
 /.config/** 

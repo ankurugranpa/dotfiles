@@ -32,4 +32,4 @@ export DENO_INSTALL="/$HOME/.deno"
 export PATH="$DENO_INSTALL/bin:$PATH"
 # alias
 alias vim='nvim'
-export PATH="/home/ahahahaha/.cargo/bin:$PATH"
+export PATH="$HOME/.cargo/bin:$PATH"
