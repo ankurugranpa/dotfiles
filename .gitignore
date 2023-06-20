@@ -8,7 +8,7 @@
 !/.installer/
 !/.vim
 !/README.md
-!/.config/
+!/.config
 /.config/** 
 !/.mybin/
 !/mybin-local/
