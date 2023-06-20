@@ -1,5 +1,0 @@
-.bin 
-.vimrc  
-.zsh.d
-.zshrc
-.config

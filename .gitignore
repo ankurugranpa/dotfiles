@@ -9,6 +9,7 @@
 !/.vim
 !/README.md
 /.config/** 
-/mybin/**
+!/.mybin
+/mybin-local/**
 !/mybin/tracking
 /.zsh.d/local.zsh
