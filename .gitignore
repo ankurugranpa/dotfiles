@@ -8,8 +8,10 @@
 !/.installer
 !/.vim
 !/README.md
+!/.config
 /.config/** 
 !/.mybin
+!/mybin-local/
 /mybin-local/**
 !/mybin/tracking
 /.zsh.d/local.zsh
