@@ -2,16 +2,15 @@
 /.**
 
 !/.zshrc
-!/.zsh.d
+!/.zsh.d/
 !/.vimrc
 !/.gitignore
-!/.installer
+!/.installer/
 !/.vim
 !/README.md
-!/.config
+!/.config/
 /.config/** 
-!/.mybin
+!/.mybin/
 !/mybin-local/
 /mybin-local/**
 !/mybin/tracking
-/.zsh.d/local.zsh
