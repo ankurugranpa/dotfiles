@@ -1,6 +1,8 @@
-/*
-/.**
+## all ignore
+*
+*/
 
+## not ignores
 !/.zshrc
 !/.zsh.d/
 !/.vimrc
@@ -8,9 +10,8 @@
 !/.installer/
 !/.vim
 !/README.md
-!/.config
+!/.config/
 /.config/** 
 !/.mybin/
 !/mybin-local/
 /mybin-local/**
-!/mybin/tracking
