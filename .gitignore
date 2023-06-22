@@ -1,17 +1,14 @@
-## all ignore
-*
-*/
+/*
+/.**
 
-## not ignores
-!/.zshrc
-!/.zsh.d/
-!/.vimrc
 !/.gitignore
-!/.installer/
-!/.vim
-!/README.md
 !/.config/
-/.config/** 
+/.config/**
+!/installer/
 !/.mybin/
+!/.zsh.d/
 !/mybin-local/
 /mybin-local/**
+!/.vimrc
+!/.zshrc
+!/README.md
