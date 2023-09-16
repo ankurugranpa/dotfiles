@@ -1,0 +1,14 @@
+#/usr/bin/bash
+FILENAME='`'
+STEDSOURCE='```'
+echo "## " >> $1
+for i in $(ls)
+do
+	echo $FILENAME$i$FILENAME"のソースコード" >> $1
+	echo $STEDSOURCE${i##*.}>> $1
+	cat  $i >> $1
+	echo $STEDSOURCE >> $1
+done 
+echo "実行結果" >> $1
+echo $STEDSOURCE >> $1
+echo $STEDSOURCE >> $1

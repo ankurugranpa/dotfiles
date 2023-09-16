@@ -18,3 +18,9 @@ function open {
 	explorer.exe $1
 }
 autoload -Uz open
+
+function chrome {
+	# open on chrome
+	/mnt/c/Program\ Files/Google/Chrome/Application/chrome.exe $1
+}
+autoload -Uz chrome

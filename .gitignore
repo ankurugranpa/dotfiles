@@ -1,14 +1,28 @@
-/*
-/.**
+## all ignore
+*
+!*/
 
-!/.gitignore
-!/.config/
-/.config/**
-!/installer/
-!/.mybin/
-!/.zsh.d/
-!/mybin-local/
-/mybin-local/**
-!/.vimrc
+## zsh
 !/.zshrc
+!/.zsh.d/
+!/.zsh.d/* 
+
+## vim
+!/.vimrc
+
+
+
+## localfiles
+!/mybin-local/
+!/mybin-local/bin/*
+
+## config
+!/.config
+!/.config/nvim/*
+
+## global
+!/.mybin/
+!/.mybin/*
 !/README.md
+!/.installer/
+!/.installer/*

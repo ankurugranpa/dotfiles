@@ -33,3 +33,10 @@ export PATH="$DENO_INSTALL/bin:$PATH"
 # alias
 alias vim='nvim'
 export PATH="$HOME/.cargo/bin:$PATH"
+export PATH=$PATH:~/dotfiles/mybin-local/bin
+
+# nodebrew
+export PATH=$HOME/.nodebrew/current/bin:$PATH
+
+# direnv
+eval "$(direnv hook zsh)"
