@@ -50,6 +50,10 @@ if !(type "nvim" > /dev/null 2>&1); then
 	mv nvim.appimage ~/dotfiles/mybin-local/nvim
 fi
 
+# install fzf
+git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+~/.fzf/install
+
 #zplugのインストール
 echo "[install] zplug"
 curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh | zsh

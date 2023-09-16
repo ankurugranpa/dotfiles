@@ -9,6 +9,10 @@ nnoremap <silent> <C-j> :bprev<CR>
 nnoremap <silent> <C-k> :bnext<CR>
 noremap j gj
 noremap k gk
+nnoremap <Del> :bdelete<CR>
+autocmd VimEnter * :Copilot disable
+
+
 
 "" command! Change_buf_j call Change_buf_j()
 "" nmap <silent> <C-j>:Change_buf_j<CR>
