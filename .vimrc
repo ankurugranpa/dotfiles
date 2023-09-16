@@ -10,7 +10,6 @@ nnoremap <silent> <C-k> :bnext<CR>
 noremap j gj
 noremap k gk
 nnoremap <Del> :bdelete<CR>
-autocmd VimEnter * :Copilot disable
 
 
 
