@@ -5,7 +5,12 @@
 ## zsh
 !/.zshrc
 !/.zsh.d/
-!/.zsh.d/* 
+!/.zsh.d/bin.zsh
+!/.zsh.d/pluging.zsh
+!/.zsh.d/prompt.zsh
+!/.zsh.d/setting.zsh
+
+
 
 ## vim
 !/.vimrc
