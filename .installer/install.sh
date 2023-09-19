@@ -27,7 +27,7 @@ do
 	        ln -s $HOME/dotfiles/$line $FILE
 	fi
 done < $HOME/dotfiles/.installer/install_file.txt
-mkdir $HOME/dotfiles/.zsh.d/env.zsh
+touch $HOME/dotfiles/.zsh.d/env.zsh
 
 #ubuntuの場合ログインシェルを変更する
 #if [ $SHELL_TYPE==2 ]; then
