@@ -1,5 +1,6 @@
 #!/bin/bash
 #引数の設定
+NVIM_INSTALL_PATH=$HOME/dotfiles/mybin-local/bin
 
 #backupファイルの作成
 if [ -e $HOME/.config_backup ]; then
@@ -44,12 +45,19 @@ if [ $1 = -deno]; then
 fi
 
 # nvimのインストール
-if !(type "nvim" > /dev/null 2>&1); then
-	echo "[install] NeoVim"
-	curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
-	chmod u+x nvim.appimage
-	mv nvim.appimage ~/dotfiles/mybin-local/nvim
-fi
+wget "https://github.com/neovim/neovim/archive/refs/tags/stable.tar.gz" -O "nvim_install_file.tar.gz" -p $NVIM_INSTALL_PATH
+tar -zxvf "$NVIM_INSTALL_PATH/nvim_install_file.tar.gz"
+rm -r "$NVIM_INSTALL_PATH/nvim_install_file.tar.gz"
+rm -r "$NVIM_INSTALL_PATH/nvim_install_file/build/"
+make CMAKE_BUILD_TYPE=Release CMAKE_EXTRA_FLAGS="-DCMAKE_INSTALL_PREFIX=$HOME/neovim"
+sudo make install
+export PATH="$HOME/neovim/bin:$PATH"
+
+
+# clear the CMake cache
+# make install CMAKE_EXTRA_FLAGS="-DCMAKE_INSTALL_PREFIX=$HOME/neovim"
+# make install
+
 
 # install fzf
 git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
@@ -67,4 +75,3 @@ curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
 echo "Finish!!!"
-
