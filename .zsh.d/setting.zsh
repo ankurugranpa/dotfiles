@@ -21,17 +21,20 @@ setopt hist_no_store
 # PATH
 # デフォルトのエディタ
 export EDITOR=vim
+# 
 # NeoVim用のpath
 export XDG_CONFIG_HOME=~/.config/
+#
 # 自作コマンドのディレクトリ
 export PATH=$PATH:~/dotfiles/.mybin
+#
 # ローカルのコマンドディレクトリ
-export PATH=$PATH:~/dotfiles/mybin-local
+export PATH=$PATH:~/dotfiles/mybin-local/bin
+#
 # Deno用
 export DENO_INSTALL="/$HOME/.deno"
 export PATH="$DENO_INSTALL/bin:$PATH"
+
 # alias
 alias vim='nvim'
-export PATH=$PATH:~/dotfiles/mybin-local/bin
-
-
+alias clip.exe='iconv -t sjis | clip.exe'
