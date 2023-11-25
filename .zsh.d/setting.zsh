@@ -30,6 +30,7 @@ export PATH=$PATH:~/dotfiles/.mybin
 #
 # ローカルのコマンドディレクトリ
 export PATH=$PATH:~/dotfiles/mybin-local/bin
+export PATH=$PATH:~/dotfiles/mybin-local/
 #
 # Deno用
 export DENO_INSTALL="/$HOME/.deno"
