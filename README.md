@@ -11,3 +11,11 @@ dotfiles/.binに移動するその後インストーラーの実行
 [vim-lsp](https://github.com/prabirshrestha/vim-lsp)  
 [vim-lsp-setting](https://github.com/mattn/vim-lsp-settings)   
 [白原(nerdfonts)](https://github.com/yuru7/HackGen)
+
+## how to install Neovim
+```
+sudo apt-get install ninja-build gettext cmake unzip curl
+git clone https://github.com/neovim/neovim
+make CMAKE_BUILD_TYPE=RelWithDebInfo CMAKE_INSTALL_PREFIX=full/install/path
+sudo make install
+```
