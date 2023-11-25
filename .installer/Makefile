@@ -29,15 +29,16 @@ Buckup.o:
 NeoVim:
 	@echo "##########"
 	@echo "[Install] NeoVim"
-	@wget "https://github.com/neovim/neovim/archive/refs/tags/stable.tar.gz"\
-		-O "nvim_install_file.tar.gz" -p $(NVIM_INSTALL_PATH)
-	@tar -zxvf "$(NVIM_INSTALL_PATH)/nvim_install_file.tar.gz"
-	@rm -r "$(NVIM_INSTALL_PATH)/nvim_install_file.tar.gz"
-	@rm -r "$(NVIM_INSTALL_PATH)/nvim_install_file/build/"
-	@make -f "$(NVIM_INSTALL_PATH)/nvim_install_file"\
+	@wget "https://github.com/neovim/neovim/archive/refs/tags/stable.tar.gz" \
+	       	-O "nvim_install_file.tar.gz"
+	@tar -zxvf "nvim_install_file.tar.gz"
+	@rm -r "nvim_install_file.tar.gz"
+	@echo "てすと"
+	@make -f "neovim-stable/Makefile"\
 		CMAKE_BUILD_TYPE=Release \
 		CMAKE_EXTRA_FLAGS="-DCMAKE_INSTALL_PREFIX=$(HOME)/dotfiles/mybin-local/neovim" \
-	&& sudo make -f "$(NVIM_INSTALL_PATH)/nvim_install_file" install
+		&& sudo make -f "neovim-stable" install
+	@rm -rf "neovim-stable"
 	@echo "[Finish] NeoVim"
 	@echo "NeoVim Installed PATH is $(HOME)/dotfiles/mybin-local/neovim"
 	@echo "||||||||||"
