@@ -1,3 +1,4 @@
+NVIM_INSTALL_PATH = $(HOME)/dotfiles/mybin-local/bin
 test.o:
 	@echo "##########"
 	@bash ./install_sh/echo.sh
@@ -25,18 +26,36 @@ Buckup.o:
 	@echo "[Finish] Buckup File"
 	@echo "||||||||||"
 
-fzf.o: 
+NeoVim:
+	@echo "##########"
+	@echo "[Install] NeoVim"
+	@wget "https://github.com/neovim/neovim/archive/refs/tags/stable.tar.gz"\
+		-O "nvim_install_file.tar.gz" -p $(NVIM_INSTALL_PATH)
+	@tar -zxvf "$(NVIM_INSTALL_PATH)/nvim_install_file.tar.gz"
+	@rm -r "$(NVIM_INSTALL_PATH)/nvim_install_file.tar.gz"
+	@rm -r "$(NVIM_INSTALL_PATH)/nvim_install_file/build/"
+	@make -f "$(NVIM_INSTALL_PATH)/nvim_install_file"\
+		CMAKE_BUILD_TYPE=Release \
+		CMAKE_EXTRA_FLAGS="-DCMAKE_INSTALL_PREFIX=$(HOME)/dotfiles/mybin-local/neovim" \
+	&& sudo make -f "$(NVIM_INSTALL_PATH)/nvim_install_file" install
+	@echo "[Finish] NeoVim"
+	@echo "NeoVim Installed PATH is $(HOME)/dotfiles/mybin-local/neovim"
+	@echo "||||||||||"
+
+fzf.o:
 	# Install fzf	
 	@echo "##########"
 	@git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 	@~/.fzf/install
 	@echo "||||||||||"
+
 zplug.o:
 	# install zplug
 	@echo "##########"
 	@echo "[Install] zplug"
-	@curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh | zsh
-	@source $HOME/.zshrc
+	@curl -sL --proto-redir -all,\
+		https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh | zsh
+	@source $(HOME)/.zshrc
 	@zplug install
 	@echo "[Finish] zplug"
 	@echo "||||||||||"
