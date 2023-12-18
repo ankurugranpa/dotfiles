@@ -3,3 +3,4 @@
 .zsh.d
 .zshrc
 .config
+.tmux.conf
