@@ -45,13 +45,13 @@ if [ $1 = -deno]; then
 fi
 
 # nvimのインストール
-wget "https://github.com/neovim/neovim/archive/refs/tags/stable.tar.gz" -O "nvim_install_file.tar.gz" -p $NVIM_INSTALL_PATH
-tar -zxvf "$NVIM_INSTALL_PATH/nvim_install_file.tar.gz"
-rm -r "$NVIM_INSTALL_PATH/nvim_install_file.tar.gz"
-rm -r "$NVIM_INSTALL_PATH/nvim_install_file/build/"
-make CMAKE_BUILD_TYPE=Release CMAKE_EXTRA_FLAGS="-DCMAKE_INSTALL_PREFIX=$HOME/neovim"
-sudo make install
-export PATH="$HOME/neovim/bin:$PATH"
+# wget "https://github.com/neovim/neovim/archive/refs/tags/stable.tar.gz" -O "nvim_install_file.tar.gz" -p $NVIM_INSTALL_PATH
+# tar -zxvf "$NVIM_INSTALL_PATH/nvim_install_file.tar.gz"
+# rm -r "$NVIM_INSTALL_PATH/nvim_install_file.tar.gz"
+# rm -r "$NVIM_INSTALL_PATH/nvim_install_file/build/"
+# make CMAKE_BUILD_TYPE=Release CMAKE_EXTRA_FLAGS="-DCMAKE_INSTALL_PREFIX=$HOME/neovim"
+# sudo make install
+# export PATH="$HOME/neovim/bin:$PATH"
 
 
 # clear the CMake cache
