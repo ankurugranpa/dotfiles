@@ -18,7 +18,8 @@ return {
   	{ -- buffer tab
 		"romgrk/barbar.nvim",
 		keys = { -- lazy load 
-			{"<C-n>"},
+			{ "<C-n>", ":Fern . -reveal=% -drawer -toggle -width=30<CR>", desc = "toggle fern" },
+			-- {"<C-n>"},
 		},
 		dependencies = {
 			"lewis6991/gitsigns.nvim", -- OPTIONAL: for git status
