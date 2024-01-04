@@ -1,21 +1,41 @@
-# zsh用のdotfiles
-## 導入の仕方  
-dotfilesをルートディレクトリに配置   
-`git clone https://github.com/ankurugranpa/dotfiles.git`  
-dotfiles/.binに移動するその後インストーラーの実行  
-(`curl`がインストールされていない場合は先に`curl`をインストール)  
-`bash ./install.sh`  
-## 依存関系   
-[zplug](https://github.com/zplug/zplug)  
-[vim-plug](https://github.com/junegunn/vim-plug)  
-[vim-lsp](https://github.com/prabirshrestha/vim-lsp)  
-[vim-lsp-setting](https://github.com/mattn/vim-lsp-settings)   
-[白原(nerdfonts)](https://github.com/yuru7/HackGen)
+# 🐔dotfiles for zsh🐔
+## dependency
+zsh
+NeoVim
 
-## how to install Neovim
+## Install
 ```
-sudo apt-get install ninja-build gettext cmake unzip curl
-git clone https://github.com/neovim/neovim
-make CMAKE_BUILD_TYPE=RelWithDebInfo CMAKE_INSTALL_PREFIX=full/install/path
-sudo make install
+git clone https://github.com/ankurugranpa/dotfiles.git
+cd dotfiles/.installer
+bash install.sh
+cd ~
+source .zshrc
 ```
+
+## zsh
+setting files path:`.zsh.d/`
+### plugin  manager
+[zplug](https://github.com/zplug/zplug)
+
+
+## NeoVim
+setting files path:`.config/nvim`
+### plugin manager
+[Lazy.nvim](https://github.com/folke/lazy.nvim)
+- usage:
+```
+:Lazy
+```
+
+### Lsp Manager 
+[mason.nvim](https://github.com/williamboman/mason.nvim)
+- usage:
+install lsp
+```
+:MasonInstall <lsp server name>
+```
+
+## Font
+using NerdFonts
+ex)
+[白原](https://github.com/yuru7/HackGen)
