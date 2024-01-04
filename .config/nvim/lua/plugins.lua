@@ -15,11 +15,18 @@ return {
 			},
 		},
 	}, 
+	{ -- bottom bar desing
+	    "nvim-lualine/lualine.nvim",
+	    dependencies = { "nvim-tree/nvim-web-devicons" }
+	}, 
   	{ -- buffer tab
 		"romgrk/barbar.nvim",
-		keys = { -- lazy load 
-			{ "<C-n>", ":Fern . -reveal=% -drawer -toggle -width=30<CR>", desc = "toggle fern" },
-			-- {"<C-n>"},
+		event = "BufAdd",
+		-- event = "VimEnter",
+		keys = {
+			{"<Del>",  "<Cmd>BufferClose<CR>"},
+			{"<C-j>",  "<Cmd>BufferPrevious<CR>"},
+			{"<C-k>",  "<Cmd>BufferNext<CR>"},
 		},
 		dependencies = {
 			"lewis6991/gitsigns.nvim", -- OPTIONAL: for git status
@@ -28,7 +35,7 @@ return {
 		init = function() vim.g.barbar_auto_setup = false end,
 		opts = {
 			-- lazy.nvim will automatically call setup for you. put your options here, anything missing will use the default:
-			-- animation = true,
+			animation = true,
 			-- insert_at_start = true,
 			-- …etc.
 			},
@@ -36,17 +43,17 @@ return {
 	},
 	-- LSP
 	{ 
-		"neovim/nvim-lspconfig", 
+		"neovim/nvim-lspconfig",
 --		event = "VimEnter"
 	},
 	{
-		"williamboman/mason.nvim", 
+		"williamboman/mason.nvim",
 -- 		cmd = { "Mason", "MasonInstall" },
 --		build = ":MasonUpdate",
 -- 		event = "VimEnter",
 		-- event = { "BufReadPre", "VimEnter" },
-	}, 
-	{ 
+	},
+	{
 		"williamboman/mason-lspconfig.nvim",
 --		event = "BufReadPre", 
 		-- build = ":MasonUpdate",
@@ -64,10 +71,22 @@ return {
 		event = "VimEnter",
 		dependencies = {
 		    { "hrsh7th/cmp-nvim-lsp" },
+		    { "hrsh7th/cmp-path" }, 
 		    { "hrsh7th/cmp-buffer" },
+		    { "hrsh7th/vim-vsnip" }, 
 		    { "hrsh7th/cmp-emoji" },
 		    { "hrsh7th/cmp-vsnip" },
-		    { "onsails/lspkind.nvim" },
 		},
 	},
+	{ "onsails/lspkind.nvim" },
+	{ -- looks lsp
+		"nvimdev/lspsaga.nvim",
+		config = function()
+		require("lspsaga").setup({})
+		end,
+		dependencies = {
+			"nvim-treesitter/nvim-treesitter", -- optional
+			"nvim-tree/nvim-web-devicons"     -- optional
+		},
+    }
 }
