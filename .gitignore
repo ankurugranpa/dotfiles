@@ -13,6 +13,8 @@
 ## vim
 !/.vimrc
 
+## nvim
+
 ## tmux
 !/.tmux.conf
 
@@ -21,15 +23,18 @@
 !/mybin-local/bin/
 
 ## config
-!/.config
-!/.config/nvim/_init.vim
-!/.config/nvim/init.lua
-!/.config/nvim/_init.vim
-!/.config/nvim/lua/base.lua
-!/.config/nvim/lua/keymaps.lua
-!/.config/nvim/lua/lazy_nvim.lua
-!/.config/nvim/lua/options.lua
-!/.config/nvim/lua/plugins.lua
+!/.config/nvim/
+!/.config/nvim/**
+# !/.config
+# !/.config/nvim/_init.vim
+# !/.config/nvim/init.lua
+# !/.config/nvim/_init.vim
+# !/.config/nvim/lua/base.lua
+# !/.config/nvim/lua/keymaps.lua
+# !/.config/nvim/lua/lazy_nvim.lua
+# !/.config/nvim/lua/options.lua
+# !/.config/nvim/lua/plugins.lua
+# !/.config/nvim/lua/**
 
 
 ## global
