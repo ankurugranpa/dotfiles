@@ -1,5 +1,5 @@
+-- load setting file 
 require('base')
 require('keymaps')
 require('options')
-require('lazy_nvim')
 require('plugins')

@@ -5,4 +5,7 @@ local options = {
 	backup = false, -- not create backup file
 	hlsearch = true, -- set highlight search 
 	ignorecase = true,
+	tabstop = 4, -- tab
+	expandtab = true, -- tab
+	smartindent = true, -- auto tab
 }
