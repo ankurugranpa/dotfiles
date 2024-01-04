@@ -39,8 +39,8 @@ endif
 call plug#begin('~/.vim/plugged')
 
 "" vim-lsp周りのインストール
-"" Plug 'prabirshrestha/vim-lsp'
-"" Plug 'mattn/vim-lsp-settings'
+Plug 'prabirshrestha/vim-lsp'
+Plug 'mattn/vim-lsp-settings'
 
 
 Plug 'neovim/nvim-lspconfig'
@@ -72,8 +72,8 @@ Plug 'github/copilot.vim'
 ""Plug 'Shougo/ddc-converter_remove_overlap'
 
 ""オートコンプリート
-"" Plug 'prabirshrestha/asyncomplete.vim'
-"" Plug 'prabirshrestha/asyncomplete-lsp.vim'
+Plug 'prabirshrestha/asyncomplete.vim'
+Plug 'prabirshrestha/asyncomplete-lsp.vim'
 
 "" fernのインストール
 Plug 'lambdalisue/fern.vim'
