@@ -1,41 +1,13 @@
-# 🐔dotfiles for zsh🐔
+# 🐔dotfiles for windows🐔
 ## dependency
-zsh
-NeoVim
-
-## Install
+Scoop
+## How to Setup
+- Install Scoop
 ```
-git clone https://github.com/ankurugranpa/dotfiles.git
-cd dotfiles/.installer
-bash install.sh
-cd ~
-source .zshrc
+Set-ExecutionPolicy RemoteSigned -Scope CurrentUser -Force
+iwr -useb get.scoop.sh | iex
 ```
-
-## zsh
-setting files path:`.zsh.d/`
-### plugin  manager
-[zplug](https://github.com/zplug/zplug)
-
-
-## NeoVim
-setting files path:`.config/nvim`
-### plugin manager
-[Lazy.nvim](https://github.com/folke/lazy.nvim)
-- usage:
+- Install git
 ```
-:Lazy
+Scoop install git
 ```
-
-### Lsp Manager 
-[mason.nvim](https://github.com/williamboman/mason.nvim)
-- usage:
-install lsp
-```
-:MasonInstall <lsp server name>
-```
-
-## Font
-using NerdFonts
-ex)
-[白原](https://github.com/yuru7/HackGen)

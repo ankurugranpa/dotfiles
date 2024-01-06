@@ -1,0 +1,8 @@
+Set-Alias vim nvim # nvimのエイリアス
+
+Set-PSReadLineKeyHandler -Chord Tab -Function MenuComplete # 補完の挙動をzshと同じにする
+
+Set-PSReadLineKeyHandler -Chord Ctrl+d -Function DeleteCharOrExit # ctrl-Dの有効化
+#
+# oh-my-poshの設定
+oh-my-posh init pwsh --config "./tokyo.omp.json" | Invoke-Expression

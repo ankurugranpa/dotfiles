@@ -1,6 +1,0 @@
-.bin 
-.vimrc  
-.zsh.d
-.zshrc
-.config
-.tmux.conf
