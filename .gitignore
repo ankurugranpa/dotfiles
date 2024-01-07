@@ -43,3 +43,7 @@
 !/README.md
 !/.installer/
 !/.installer/*
+
+# powershell
+!/windows/
+!/windows/**

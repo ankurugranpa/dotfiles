@@ -1,0 +1,7 @@
+# ファイルの読み込み
+$PSInclude = "$HOME/dotfiles/windows/profiles/"
+ls $PSInclude  *.ps1 | 
+    %{
+        $path = $PSInclude  + $_.Name
+        . $path
+    }
