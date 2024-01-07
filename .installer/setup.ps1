@@ -25,6 +25,9 @@ $fileAContent = Get-Content -Path $profile_txt -Raw
 # $PROFILEに内容を追加
 Add-Content -Path $PROFILE -Value $fileAContent
 
+# Install oh-my-posh
+winget install JanDeDobbeleer.OhMyPosh -s winget
+
 ## Install from scoop
 scoop install busybox
 scoop install fzf
