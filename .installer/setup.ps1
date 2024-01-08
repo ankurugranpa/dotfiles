@@ -1,6 +1,3 @@
-# スクリプト実行が許可されていなければ許可する
-if((Get-ExecutionPolicy -Scope LocalMachine) -ne "RemoteSigned"){Set-ExecutionPolicy RemoteSigned -Scope CurrentUser -Force}
-
 # Profileの存在判定
 if((Test-Path $PROFILE)){
         $backup_dir = "$HOME/prompt_backup"
@@ -31,3 +28,6 @@ winget install JanDeDobbeleer.OhMyPosh -s winget
 ## Install from scoop
 scoop install busybox
 scoop install fzf
+scoop install nvim
+
+New-Item -ItemType SymbolicLink -Path "$HOME/AppData/Local/nvim" -Value "$HOME/dotfiles/.config/nvim"
