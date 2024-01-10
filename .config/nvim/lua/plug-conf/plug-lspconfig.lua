@@ -16,3 +16,17 @@ mason_lspconfig.setup_handlers({
 	nvim_lsp[server_name].setup(opts)
 	end 
 })
+
+-- Python Setting
+require("lspconfig").pyright.setup{
+	settings = {
+		python = {
+			venvPath = ".",
+			pythonPath = "./.venv/bin/python",
+			-- pythonPath = "/usr/local/bin/python",
+			analysis = {
+				extraPaths = {"."}
+			}
+		}
+	}
+}
