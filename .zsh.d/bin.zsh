@@ -1,6 +1,10 @@
 function venv {
 	# activate venv 
-	source venv/bin/activate
+	if [ -n "$VIRTUAL_ENV" ]; then
+		deactivate
+	else
+		source venv/bin/activate
+	fi
 }
 autoload -Uz venv
 
