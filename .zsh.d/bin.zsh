@@ -20,7 +20,7 @@ function web-dl {
 	echo "Save to file: [$1]"
 }
 
-autoload -Uzweb-dl 
+autoload -Uz web-dl 
 
 
 
