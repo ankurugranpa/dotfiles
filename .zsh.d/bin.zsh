@@ -17,7 +17,7 @@ autoload -Uz word
 
 function web-dl {
 	curl -b $WEBCLASS "$2"  -o "$1"
-	echo "Save to file: [$1]"
+	echo "Save File: [$1]"
 }
 
 autoload -Uz web-dl 
