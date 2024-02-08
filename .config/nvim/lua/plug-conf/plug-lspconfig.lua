@@ -8,6 +8,7 @@ mason_lspconfig.setup_handlers({
 	opts.on_attach = function(_, bufnr)
 
 	local bufopts = { silent = true, buffer = bufnr }
+	vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
 	vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)
 	vim.keymap.set('n', 'gtD', vim.lsp.buf.type_definition, bufopts)
 	vim.keymap.set('n', 'grf', vim.lsp.buf.references, bufopts)
