@@ -7,20 +7,20 @@ colors
 #vimライクなコマンドラインにする設定
 bindkey -v
 #PROMPTの表示設定(一般ユーザーの時)
-PROMPT_INS='${fg[green]}%n${reset_color}`python_venv``conda_env`|%~
+PROMPT_INS='${fg[green]}%n${reset_color}`python_venv``conda_env``git-prompt`|%~
 --INSERT--$' 
-PROMPT_NOR='${fg[green]}%n${reset_color}`python_venv``conda_env`|%~
+PROMPT_NOR='${fg[green]}%n${reset_color}`python_venv``conda_env``git-prompt`|%~
 --NORMAL--$ '
-PROMPT_VIS='${fg[green]}%n${reset_color}`python_venv``conda_env`|%~
+PROMPT_VIS='${fg[green]}%n${reset_color}`python_venv``conda_env``git-prompt`|%~
 --VISUAL--$' 
 
 if [ ${UID} -eq 0 ]; then
   #PROMPTの表示設定(rootユーザーの時)
-  PROMPT_INS='(root)${fg[green]}%n${reset_color}`python_venv``conda_env`|%~
+  PROMPT_INS='(root)${fg[green]}%n${reset_color}`python_venv``conda_env``git-prompt`|%~
   --INSERT--$'
-  PROMPT_NOR='(root)${fg[green]}%n${reset_color}`python_venv``conda_env`|%~
+  PROMPT_NOR='(root)${fg[green]}%n${reset_color}`python_venv``conda_env``git-prompt`|%~
   --NORMAL--$'
-  PROMPT_VIS='(root)${fg[green]}%n${reset_color}`python_venv``conda_env`|%~
+  PROMPT_VIS='(root)${fg[green]}%n${reset_color}`python_venv``conda_env``git-prompt`|%~
   --VISUAL--$'
 fi
 #venvのステータス表示
@@ -73,40 +73,36 @@ zle -N zle-line-init
 zle -N zle-keymap-select
 zle -N zle-line-pre-redraw
 zle -N what_venv
-# ここら下はbranch名を表示させるメソッドの設定-----------------------------
 
-function rprompt-git-current-branch {
-  local branch_name st branch_status
-
-  if [ ! -e  ".git" ]; then
-    # gitで管理されていないディレクトリは何も返さない
+function git-prompt {
+  local branchname branch st remote pushed upstream
+  branchname=`git symbolic-ref --short HEAD 2> /dev/null`
+  if [ -z $branchname ]; then
     return
   fi
-  branch_name=`git rev-parse --abbrev-ref HEAD 2> /dev/null`
   st=`git status 2> /dev/null`
   if [[ -n `echo "$st" | grep "^nothing to"` ]]; then
-    # 全てコミットされてクリーンな状態
-    branch_status=""
-  elif [[ -n `echo "$st" | grep "^Untracked files"` ]]; then
-    # gitに管理されていないファイルがある状態
-    branch_status=" !"
-  elif [[ -n `echo "$st" | grep "^Changes not staged for commit"` ]]; then
-    # git addされていないファイルがある状態
-    branch_status=" *"
-  elif [[ -n `echo "$st" | grep "^Changes to be committed"` ]]; then
-    # git commitされていないファイルがある状態
-    branch_status=" +"
-  elif [[ -n `echo "$st" | grep "^rebase in progress"` ]]; then
-    # コンフリクトが起こった状態
-    echo "%F{red} !!"
-    return
+    branch="%{${fg[green]}%}($branchname)%{$reset_color%}"
+  elif [[ -n `echo "$st" | grep "^nothing added"` ]]; then
+    branch="%{${fg[yellow]}%}($branchname)%{$reset_color%}"
   else
-    # 上記以外の状態の場合は青色で表示させる
-    branch_status=""
+    branch="%{${fg[red]}%}($branchname)%{$reset_color%}"
   fi
-  # ブランチ名を色付きで表示する
-  echo "($branch_name${branch_status})"
+
+  remote=`git config branch.${branchname}.remote 2> /dev/null`
+
+  if [ -z $remote ]; then
+    pushed=''
+  else
+    upstream="${remote}/${branchname}"
+    if [[ -z `git log ${upstream}..${branchname}` ]]; then
+      pushed="%{${fg[green]}%}[up]%{$reset_color%}"
+    else
+      pushed="%{${fg[red]}%}[up]%{$reset_color%}"
+    fi
+  fi
+
+  echo "$branch$pushed"
 }
 
-# プロンプトが表示されるたび、毎回プロンプトの文字列を評価し、置換する
 setopt prompt_subst
