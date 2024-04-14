@@ -35,3 +35,10 @@ function chrome {
 	/mnt/c/Program\ Files/Google/Chrome/Application/chrome.exe $1
 }
 autoload -Uz chrome
+
+function wincd {
+	# move to args win path
+	cd $(wslpath -u $1)
+}
+
+autoload -Uz wincd 
