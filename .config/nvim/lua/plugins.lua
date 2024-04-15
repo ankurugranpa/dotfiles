@@ -79,6 +79,7 @@ return {
 		},
 	},
 	{ "onsails/lspkind.nvim" },
+	{ "Hoffs/omnisharp-extended-lsp.nvim" },
 	{ -- looks lsp
 		"nvimdev/lspsaga.nvim",
 		config = function()
@@ -88,5 +89,6 @@ return {
 			"nvim-treesitter/nvim-treesitter", -- optional
 			"nvim-tree/nvim-web-devicons"     -- optional
 		},
-    }
+    	}
+
 }

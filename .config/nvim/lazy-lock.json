@@ -19,5 +19,6 @@
   "nvim-lspconfig": { "branch": "master", "commit": "ce0e625df61be77abe1340fbc9afe9ad39b31dd8" },
   "nvim-treesitter": { "branch": "master", "commit": "0da349ed303bea955942f409d29059cdb89dbe2c" },
   "nvim-web-devicons": { "branch": "master", "commit": "3e24abe1ae66532135cec911562f553fe247cb56" },
+  "omnisharp-extended-lsp.nvim": { "branch": "main", "commit": "4be2e8689067494ed7e5a4f1221adc31d1a07783" },
   "vim-vsnip": { "branch": "master", "commit": "8eebdf6ab4a880d845893f210fd20516d2e2384f" }
 }
