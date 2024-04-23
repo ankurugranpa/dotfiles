@@ -79,14 +79,14 @@ return {
 		},
 	},
 	{ "onsails/lspkind.nvim" },
-	{ -- looks lsp
-		"nvimdev/lspsaga.nvim",
-		config = function()
-		require("lspsaga").setup({})
-		end,
-		dependencies = {
-			"nvim-treesitter/nvim-treesitter", -- optional
-			"nvim-tree/nvim-web-devicons"     -- optional
-		},
-    }
+ 	{ -- looks lsp
+ 		"nvimdev/lspsaga.nvim",
+ 		-- config = function()
+ 		-- require("lspsaga").setup({})
+ 		-- end,
+ 		dependencies = {
+ 			"nvim-treesitter/nvim-treesitter", -- optional
+ 			"nvim-tree/nvim-web-devicons"     -- optional
+ 		},
+     }
 }
