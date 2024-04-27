@@ -42,3 +42,14 @@ function wincd {
 }
 
 autoload -Uz wincd 
+
+function envadd {
+	# add path
+	if [ -z "$1" ]; then
+    		echo "An argument is required."
+	else
+		echo "export PATH=\$PATH:$1" >> ~/dotfiles/.zsh.d/env.zsh
+	fi
+}
+
+autoload -Uz envadd 
