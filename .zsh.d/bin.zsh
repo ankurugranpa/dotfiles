@@ -26,7 +26,7 @@ autoload -Uz web-dl
 
 function open {
 	# open something(with default APP) on Windows
-	explorer.exe $1
+	explorer.exe $(wslpath -w $1)
 }
 autoload -Uz open
 
