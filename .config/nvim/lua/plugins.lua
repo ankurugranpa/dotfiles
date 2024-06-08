@@ -14,7 +14,7 @@ return {
 			      end
 			},
 		},
-	}, 
+	},
 	{ --coloer scheam
 	  "folke/tokyonight.nvim",
 	  lazy = false,
@@ -24,7 +24,7 @@ return {
 	{ -- bottom bar desing
 	    "nvim-lualine/lualine.nvim",
 	    dependencies = { "nvim-tree/nvim-web-devicons" }
-	}, 
+	},
   	{ -- buffer tab
 		"romgrk/barbar.nvim",
 		event = "BufAdd",
@@ -48,7 +48,7 @@ return {
 		version = "^1.0.0", -- optional: only update when a new 1.x version is released
 	},
 	-- LSP
-	{ 
+	{
 		"neovim/nvim-lspconfig",
 --		event = "VimEnter"
 	},
@@ -86,7 +86,6 @@ return {
 
 		},
 	},
-	{ "onsails/lspkind.nvim" },
  	{ -- looks lsp
  		"nvimdev/lspsaga.nvim",
  		-- config = function()
@@ -96,5 +95,9 @@ return {
  			"nvim-treesitter/nvim-treesitter", -- optional
  			"nvim-tree/nvim-web-devicons"     -- optional
  		},
-     }
+        },
+	{ -- indent view
+		"lukas-reineke/indent-blankline.nvim",
+		main = "ibl",
+	},
 }

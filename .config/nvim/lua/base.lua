@@ -30,6 +30,7 @@ require("plug-conf/plug-lualine")
 require("plug-conf/plug-lspsaga")
 require("plug-conf/plug-tokyonight")
 require("plug-conf/plug-lspkind")
+require("plug-conf/plug-indent-blankline")
 
 -- set coloer
 vim.cmd[[colorscheme tokyonight]]
