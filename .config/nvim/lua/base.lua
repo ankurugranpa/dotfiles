@@ -28,3 +28,7 @@ require("plug-conf/plug-mason")
 require("plug-conf/plug-lspconfig")
 require("plug-conf/plug-lualine")
 require("plug-conf/plug-lspsaga")
+require("plug-conf/plug-tokyonight")
+
+-- set coloer
+vim.cmd[[colorscheme tokyonight]]

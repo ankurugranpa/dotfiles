@@ -15,6 +15,12 @@ return {
 			},
 		},
 	}, 
+	{ --coloer scheam
+	  "folke/tokyonight.nvim",
+	  lazy = false,
+	  priority = 1000,
+	  opts = {},
+	},
 	{ -- bottom bar desing
 	    "nvim-lualine/lualine.nvim",
 	    dependencies = { "nvim-tree/nvim-web-devicons" }
