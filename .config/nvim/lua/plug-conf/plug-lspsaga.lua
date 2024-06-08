@@ -7,6 +7,7 @@ saga.setup{
   ui = {
     -- currently only round theme
     theme = 'round',
+    -- theme = 'tokyonight',
     -- this option only work in neovim 0.9
     title = false,
     -- border type can be single,double,rounded,solid,shadow.
@@ -79,6 +80,8 @@ keymap("n", "gd", "<cmd>Lspsaga goto_definition<CR>", { silent = true })
 keymap("n", "rn", "<cmd>Lspsaga rename<CR>", { silent = true })
 keymap("n", "K", "<cmd>Lspsaga hover_doc ++quiet<CR>", { silent = true }) 
 keymap("n", "<space>e", "<cmd>Lspsaga show_line_diagnostics<CR>", { silent = true })
+-- keymap("n", "<space>a", "<cmd>Lspsaga open_floaterm<CR>", { silent = true })
+-- keymap({'n', '<A-d>', '<cmd>Lspsaga term_toggle'})
 -- keymap({"n","v"}, "ma", "<cmd>Lspsaga code_action<CR>", { silent = true })
 -- keymap("n", "g[", "<cmd>Lspsaga diagnostic_jump_prev<CR>", { silent = true })
 -- keymap("n", "g]", "<cmd>Lspsaga diagnostic_jump_next<CR>", { silent = true })

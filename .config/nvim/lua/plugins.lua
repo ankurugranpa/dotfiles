@@ -77,11 +77,13 @@ return {
 		event = "VimEnter",
 		dependencies = {
 		    { "hrsh7th/cmp-nvim-lsp" },
-		    { "hrsh7th/cmp-path" }, 
+		    { "hrsh7th/cmp-path" },
 		    { "hrsh7th/cmp-buffer" },
-		    { "hrsh7th/vim-vsnip" }, 
+		    { "hrsh7th/vim-vsnip" },
 		    { "hrsh7th/cmp-emoji" },
 		    { "hrsh7th/cmp-vsnip" },
+		    { "onsails/lspkind.nvim" },
+
 		},
 	},
 	{ "onsails/lspkind.nvim" },
