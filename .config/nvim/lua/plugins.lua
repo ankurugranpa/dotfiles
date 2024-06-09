@@ -1,19 +1,58 @@
 return {
-	{  -- file explorer
-		"lambdalisue/fern.vim", 
-		keys = { -- lazy load 
-			{ "<C-n>", ":Fern . -reveal=% -drawer -toggle -width=30<CR>", desc = "toggle fern" },
+	-- {  -- file explorer
+	-- 	"lambdalisue/fern.vim", 
+	-- 	keys = { -- lazy load 
+	-- 		{ "<C-n>", ":Fern . -reveal=% -drawer -toggle -width=30<CR>", desc = "toggle fern" },
+	-- 	},
+	-- 	dependencies = {
+	-- 		{ "lambdalisue/nerdfont.vim", },
+	-- 		{
+	-- 		      "lambdalisue/fern-renderer-nerdfont.vim",
+	-- 		      config = function()
+	-- 			vim.g["fern#renderer"] = "nerdfont"
+	-- 			vim.g["fern#default_hidden"] = "1"
+	-- 		      end
+	-- 		},
+	-- 	},
+	-- },
+	{
+		"nvim-neo-tree/neo-tree.nvim",
+    		branch = "v3.x",
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+			"nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
+			"MunifTanjim/nui.nvim",
+		-- "3rd/image.nvim", -- Optional image support in preview window: See `# Preview Mode` for more information
+    		}
+	},
+	-- UI
+	{
+		'akinsho/toggleterm.nvim',
+		version = "*",
+		config = true
+	},
+	-- lazy.nvim
+	{
+		"folke/noice.nvim",
+		event = "VeryLazy",
+		opts = {
+		  -- add any options here
 		},
 		dependencies = {
-			{ "lambdalisue/nerdfont.vim", },
-			{
-			      "lambdalisue/fern-renderer-nerdfont.vim",
-			      config = function()
-				vim.g["fern#renderer"] = "nerdfont"
-				vim.g["fern#default_hidden"] = "1"
-			      end
-			},
-		},
+		  -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
+		  "MunifTanjim/nui.nvim",
+		  -- OPTIONAL:
+		  --   `nvim-notify` is only needed, if you want to use the notification view.
+		  --   If not available, we use `mini` as the fallback
+		  "rcarriga/nvim-notify",
+		}
+	},
+	-- Finder
+	{
+		'nvim-telescope/telescope.nvim', tag = '0.1.6',
+		dependencies = {
+			'nvim-lua/plenary.nvim'
+		}
 	},
 	{ --coloer scheam
 	  "folke/tokyonight.nvim",
@@ -99,5 +138,17 @@ return {
 	{ -- indent view
 		"lukas-reineke/indent-blankline.nvim",
 		main = "ibl",
+	},
+	{
+		"SmiteshP/nvim-navic",
+	},
+	{
+		'stevearc/aerial.nvim',
+		opts = {},
+		-- Optional dependencies
+		dependencies = {
+		   "nvim-treesitter/nvim-treesitter",
+		   "nvim-tree/nvim-web-devicons"
+		},
 	},
 }
