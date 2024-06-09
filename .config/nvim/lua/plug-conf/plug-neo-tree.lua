@@ -60,7 +60,6 @@
               untracked = "",
               ignored   = "",
               unstaged  = "󰄱",
-              -- unstaged  = "",
               staged    = "",
               conflict  = "",
             }
@@ -92,7 +91,7 @@
         commands = {},
         window = {
           position = "left",
-          width = 40,
+          width = 35,
           mapping_options = {
             noremap = true,
             nowait = true,
@@ -107,7 +106,6 @@
             ["<esc>"] = "cancel", -- close preview or floating neo-tree window
             ["P"] = { "toggle_preview", config = { use_float = true, use_image_nvim = true } },
             -- Read `# Preview Mode` for more information
-            ["l"] = "focus_preview",
             ["-"] = "open_split",
             ["|"] = "open_vsplit",
             -- ["S"] = "split_with_window_picker",
