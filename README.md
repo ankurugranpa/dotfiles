@@ -1,7 +1,9 @@
 # 🐔dotfiles for zsh🐔
 ## dependency
-zsh
-NeoVim
+- zsh
+- [NeoVim]()
+- [LazyGit]("https://github.com/jesseduffield/lazygit")
+- NerdFonts
 
 ## Install
 ```
