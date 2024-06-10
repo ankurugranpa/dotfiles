@@ -40,6 +40,7 @@ require("plug-conf/plug-neo-tree")
 require("plug-conf/plug-telescope")
 require("plug-conf/plug-aerial")
 require("plug-conf/plug-trouble")
+require("plug-conf/plug-copilotchat")
 
 -- set coloer
 vim.cmd[[colorscheme tokyonight]]
