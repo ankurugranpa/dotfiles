@@ -1,9 +1,10 @@
 # 🐔dotfiles for zsh🐔
 ## dependency
 - zsh
-- [NeoVim]()
+- [NeoVim]("https://github.com/neovim/neovim")
 - [LazyGit]("https://github.com/jesseduffield/lazygit")
-- NerdFonts
+- [NerdFonts]("https://github.com/ryanoasis/nerd-fonts")
+- [tiktoken-core.so]("https://github.com/gptlang/lua-tiktoken")
 
 ## Install
 ```
