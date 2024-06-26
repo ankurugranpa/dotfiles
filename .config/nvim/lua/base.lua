@@ -41,7 +41,7 @@ require("plug-conf/plug-telescope")
 -- require("plug-conf/plug-aerial")
 require("plug-conf/plug-trouble")
 require("plug-conf/plug-copilotchat")
-require("plug-conf/plug-mason-tool-installer")
+-- require("plug-conf/plug-mason-tool-installer")
 
 
 -- set coloer
