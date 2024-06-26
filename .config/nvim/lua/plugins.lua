@@ -93,6 +93,9 @@ return {
 	},
 	{
 		"williamboman/mason.nvim",
+		dependencies = {
+			"WhoIsSethDaniel/mason-tool-installer.nvim",
+		},
 -- 		cmd = { "Mason", "MasonInstall" },
 --		build = ":MasonUpdate",
 -- 		event = "VimEnter",
