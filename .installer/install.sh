@@ -30,48 +30,8 @@ do
 done < $HOME/dotfiles/.installer/install_file.txt
 touch $HOME/dotfiles/.zsh.d/env.zsh
 
-#ubuntuの場合ログインシェルを変更する
-#if [ $SHELL_TYPE==2 ]; then
-#	sudo apt-get install zsh
-#	chsh -s $(which zsh)
-#fi
-
-#denoのインストール
-if [ $1 = -deno]; then
-	echo "[install] deno"
-        curl -fsSL https://deno.land/install.sh | sh
-        deno run https://deno.land/std/examples/welcome.ts
-	
-fi
-
-# nvimのインストール
-# wget "https://github.com/neovim/neovim/archive/refs/tags/stable.tar.gz" -O "nvim_install_file.tar.gz" -p $NVIM_INSTALL_PATH
-# tar -zxvf "$NVIM_INSTALL_PATH/nvim_install_file.tar.gz"
-# rm -r "$NVIM_INSTALL_PATH/nvim_install_file.tar.gz"
-# rm -r "$NVIM_INSTALL_PATH/nvim_install_file/build/"
-# make CMAKE_BUILD_TYPE=Release CMAKE_EXTRA_FLAGS="-DCMAKE_INSTALL_PREFIX=$HOME/neovim"
-# sudo make install
-# export PATH="$HOME/neovim/bin:$PATH"
-
-
-# clear the CMake cache
-# make install CMAKE_EXTRA_FLAGS="-DCMAKE_INSTALL_PREFIX=$HOME/neovim"
-# make install
-
-
 # install fzf
 git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 ~/.fzf/install
-
-#zplugのインストール
-echo "[install] zplug"
-curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh | zsh
-source $HOME/.zshrc
-zplug install
-
-#vim-plugのインストール
-echo "[install] vim-plug"
-curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
-    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
 echo "Finish!!!"
