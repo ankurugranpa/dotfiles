@@ -8,6 +8,7 @@ mason_lspconfig.setup_handlers({
 	opts.on_attach = function(_, bufnr)
 
 	local bufopts = { silent = true, buffer = bufnr }
+	vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
 	vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)
 	vim.keymap.set('n', 'gtD', vim.lsp.buf.type_definition, bufopts)
 	vim.keymap.set('n', 'grf', vim.lsp.buf.references, bufopts)
@@ -16,3 +17,17 @@ mason_lspconfig.setup_handlers({
 	nvim_lsp[server_name].setup(opts)
 	end 
 })
+
+-- Python Setting
+require("lspconfig").pyright.setup{
+	settings = {
+		python = {
+			venvPath = ".",
+			pythonPath = "./.venv/bin/python",
+			-- pythonPath = "/usr/local/bin/python",
+			analysis = {
+				extraPaths = {"."}
+			}
+		}
+	}
+}

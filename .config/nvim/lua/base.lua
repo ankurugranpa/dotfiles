@@ -1,4 +1,8 @@
 vim.cmd("autocmd!")
+vim.api.nvim_create_autocmd({ "WinEnter", "FocusGained", "BufEnter" }, {
+  pattern = "*",
+  command = "checktime",
+})
 
 vim.scriptencoding = "utf-8"
 
@@ -28,4 +32,13 @@ require("plug-conf/plug-mason")
 require("plug-conf/plug-lspconfig")
 require("plug-conf/plug-lualine")
 require("plug-conf/plug-lspsaga")
-require("plug-conf/plug-omunicsharp")
+require("plug-conf/plug-tokyonight")
+require("plug-conf/plug-lspkind")
+require("plug-conf/plug-indent-blankline")
+require("plug-conf/plug-toggleterm")
+require("plug-conf/plug-neo-tree")
+require("plug-conf/plug-telescope")
+require("plug-conf/plug-trouble")
+
+-- set coloer
+vim.cmd[[colorscheme tokyonight]]
