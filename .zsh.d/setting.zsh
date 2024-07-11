@@ -40,7 +40,7 @@ export PATH="$DENO_INSTALL/bin:$PATH"
 alias vim='nvim'
 alias clip.exe='iconv -t sjis | clip.exe'
 
-alias poetry='python3 -m poetry'
+# alias poetry='python3 -m poetry'
 alias pythonp='poetry run python3'
 
 # Expand $PATH to include the directory where snappy applications go.
