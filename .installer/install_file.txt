@@ -4,3 +4,4 @@
 .zshrc
 .config
 .tmux.conf
+.wezterm.lua
