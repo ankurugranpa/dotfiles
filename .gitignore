@@ -18,6 +18,9 @@
 ## tmux
 !/.tmux.conf
 
+## wezterm
+!/.wezterm.lua
+
 ## localfiles
 !/mybin-local/
 !/mybin-local/bin/
