@@ -3,10 +3,11 @@ local pid = vim.fn.getpid()
 local omnisharp_bin = "C:/Users/yukit/AppData/Local/nvim-data/mason/packages/omnisharp/libexec/OmniSharp.exe"
 
 local config = {
-  handlers = {
-    ["textDocument/definition"] = require('omnisharp_extended').handler,
-  },
+  -- handlers = {
+  --   ["textDocument/definition"] = require('omnisharp_extended').handler,
+  -- },
   cmd = { omnisharp_bin, '--languageserver' , '--hostPID', tostring(pid) },
+  root_dir = require'lspconfig'.util.root_pattern("*.sln", "*.csproj"),
   -- rest of your settings
 }
 

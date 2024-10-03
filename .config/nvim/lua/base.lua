@@ -39,6 +39,7 @@ require("plug-conf/plug-toggleterm")
 require("plug-conf/plug-neo-tree")
 require("plug-conf/plug-telescope")
 require("plug-conf/plug-trouble")
+require("plug-conf/plug-omunicsharp")
 
 -- set coloer
 vim.cmd[[colorscheme tokyonight]]

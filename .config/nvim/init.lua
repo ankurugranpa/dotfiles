@@ -9,3 +9,4 @@ vim.opt.shiftwidth = 2
 vim.opt.expandtab = true
 vim.opt.autoindent = true
 vim.api.nvim_win_set_option(0, 'signcolumn', 'yes:2')
+print("test")
