@@ -32,7 +32,7 @@ require("plug-conf/plug-mason")
 require("plug-conf/plug-lspconfig")
 require("plug-conf/plug-lualine")
 require("plug-conf/plug-lspsaga")
-require("plug-conf/plug-tokyonight")
+-- require("plug-conf/plug-tokyonight")
 require("plug-conf/plug-lspkind")
 require("plug-conf/plug-indent-blankline")
 require("plug-conf/plug-toggleterm")
@@ -54,3 +54,20 @@ vim.cmd[[colorscheme vim]]
 --   highlight Normal ctermbg=none
 --   highlight NonText ctermbg=none
 -- ]])
+require("plug-conf/plug-vimtex")
+require("plug-conf/plug-transparent")
+
+-- set coloer
+-- vim.cmd[[colorscheme vim]]
+-- vim.opt.termguicolors = true
+-- -- 浮動ウィンドウの背景とボーダーを設定
+-- vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none", fg = "white" })  -- 浮動ウィンドウ背景
+-- vim.api.nvim_set_hl(0, "FloatBorder", { bg = "none", fg = "cyan" })  -- 浮動ウィンドウ枠線
+-- 
+-- -- Masonや補完メニュー用のPmenu設定
+-- vim.api.nvim_set_hl(0, "Pmenu", { bg = "gray", fg = "black" })       -- 補完メニュー背景
+-- vim.api.nvim_set_hl(0, "PmenuSel", { bg = "cyan", fg = "black" })   -- 選択時の色
+-- 
+-- -- Masonウィンドウのタイトル用の色
+-- vim.api.nvim_set_hl(0, "Title", { fg = "yellow", bold = true })     -- タイトル部分の色
+-- 

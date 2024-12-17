@@ -15,6 +15,18 @@ return {
 	-- 		},
 	-- 	},
 	-- },
+  {
+    "xiyaowong/transparent.nvim"
+  },
+  {
+    "lervag/vimtex",
+    lazy = false,     -- we don't want to lazy load VimTeX
+    -- tag = "v2.15", -- uncomment to pin to a specific release
+    init = function()
+      -- VimTeX configuration goes here, e.g.
+      -- vim.g.vimtex_view_method = "zathura"
+    end
+  },
 	{
 		"nvim-neo-tree/neo-tree.nvim",
     		branch = "v3.x",
@@ -32,21 +44,21 @@ return {
 		config = true
 	},
 	-- lazy.nvim
-	{
-		"folke/noice.nvim",
-		event = "VeryLazy",
-		opts = {
-		  -- add any options here
-		},
-		dependencies = {
-		  -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
-		  "MunifTanjim/nui.nvim",
-		  -- OPTIONAL:
-		  --   `nvim-notify` is only needed, if you want to use the notification view.
-		  --   If not available, we use `mini` as the fallback
-		  "rcarriga/nvim-notify",
-		}
-	},
+	-- {
+	-- 	"folke/noice.nvim",
+	-- 	event = "VeryLazy",
+	-- 	opts = {
+	-- 	  -- add any options here
+	-- 	},
+	-- 	dependencies = {
+	-- 	  -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
+	-- 	  "MunifTanjim/nui.nvim",
+	-- 	  -- OPTIONAL:
+	-- 	  --   `nvim-notify` is only needed, if you want to use the notification view.
+	-- 	  --   If not available, we use `mini` as the fallback
+	-- 	  "rcarriga/nvim-notify",
+	-- 	}
+	-- },
 	-- Finder
 	{
 		'nvim-telescope/telescope.nvim', tag = '0.1.6',
