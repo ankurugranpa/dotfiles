@@ -39,8 +39,18 @@ require("plug-conf/plug-toggleterm")
 require("plug-conf/plug-neo-tree")
 require("plug-conf/plug-telescope")
 -- require("plug-conf/plug-aerial")
-require("plug-conf/plug-trouble")
-require("plug-conf/plug-copilotchat")
+-- require("plug-conf/plug-trouble")
+-- require("plug-conf/plug-copilotchat")
 
 -- set coloer
-vim.cmd[[colorscheme tokyonight]]
+vim.cmd[[colorscheme vim]]
+-- tokyionightの透過設定
+-- vim.cmd[[colorscheme tokyonight]]
+
+-- tokyionightの透過設定
+-- vim.cmd([[
+--   highlight Normal guibg=none
+--   highlight NonText guibg=none
+--   highlight Normal ctermbg=none
+--   highlight NonText ctermbg=none
+-- ]])
