@@ -7,20 +7,20 @@ colors
 #vimライクなコマンドラインにする設定
 bindkey -v
 #PROMPTの表示設定(一般ユーザーの時)
-PROMPT_INS='${fg[green]}%n${reset_color}`python_venv``conda_env``git-prompt`|%~
+PROMPT_INS='${fg[green]}%n${reset_color}`python_venv``conda_env``git-prompt``singularity_env`|%~
 --INSERT--$' 
-PROMPT_NOR='${fg[green]}%n${reset_color}`python_venv``conda_env``git-prompt`|%~
+PROMPT_NOR='${fg[green]}%n${reset_color}`python_venv``conda_env``git-prompt``singularity_env`|%~
 --NORMAL--$ '
-PROMPT_VIS='${fg[green]}%n${reset_color}`python_venv``conda_env``git-prompt`|%~
+PROMPT_VIS='${fg[green]}%n${reset_color}`python_venv``conda_env``git-prompt``singularity_env`|%~
 --VISUAL--$' 
 
 if [ ${UID} -eq 0 ]; then
   #PROMPTの表示設定(rootユーザーの時)
-  PROMPT_INS='(root)${fg[green]}%n${reset_color}`python_venv``conda_env``git-prompt`|%~
+  PROMPT_INS='(root)${fg[green]}%n${reset_color}`python_venv``conda_env``git-prompt``singularity_env`|%~
   --INSERT--$'
-  PROMPT_NOR='(root)${fg[green]}%n${reset_color}`python_venv``conda_env``git-prompt`|%~
+  PROMPT_NOR='(root)${fg[green]}%n${reset_color}`python_venv``conda_env``git-prompt``singularity_env`|%~
   --NORMAL--$'
-  PROMPT_VIS='(root)${fg[green]}%n${reset_color}`python_venv``conda_env``git-prompt`|%~
+  PROMPT_VIS='(root)${fg[green]}%n${reset_color}`python_venv``conda_env``git-prompt``singularity_env`|%~
   --VISUAL--$'
 fi
 #venvのステータス表示
@@ -33,6 +33,13 @@ function python_venv {
 function conda_env {
 	if [ -n "$CONDA_PROMPT_MODIFIER" ]; then
 		echo $CONDA_PROMPT_MODIFIER
+	fi
+}
+
+function singularity_env {
+	if [ -n "$SINGULARITY_NAME" ]; then
+		
+		echo "(`basename "$SINGULARITY_NAME" ".sif"`)"
 	fi
 }
 

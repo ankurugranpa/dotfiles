@@ -52,4 +52,26 @@ function envadd {
 	fi
 }
 
-autoload -Uz envadd 
+
+
+function tmux_sync_pain {
+  session_name="$1"
+  pane_count="$2"
+
+  # 新しいセッションを作成
+  tmux new-session -d -s $session_name
+
+  # 指定された数のペインを作成
+  for i in $(seq 1 $pane_count); do
+      tmux split-window -t $session_name -h   # 横に分割
+      tmux select-layout -t $session_name tiled # ペインをタイル状に配置
+  done
+
+  # ペインを同期させるオプションを有効にする
+  tmux set-window-option -t $session_name synchronize-panes on
+
+  # 最後にセッションをアタッチ
+  tmux attach-session -t $session_name
+}
+
+autoload -Uz tmux_sync_pain
