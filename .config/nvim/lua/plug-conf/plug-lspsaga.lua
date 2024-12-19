@@ -21,7 +21,7 @@ lspsaga.setup({ -- defaults ...
 })
 
 
-vim.keymap.set("n", "[_Lsp]r", "<cmd>Lspsaga rename ++project<cr>", { silent = true, noremap = true })
+vim.keymap.set("n", "<leader>r", "<cmd>Lspsaga rename ++project<cr>", { silent = true, noremap = true })
 vim.keymap.set("n", "M", "<cmd>Lspsaga code_action<cr>", { silent = true, noremap = true })
 vim.keymap.set("x", "M", ":<c-u>Lspsaga range_code_action<cr>", { silent = true, noremap = true })
 vim.keymap.set("n", "?", "<cmd>Lspsaga hover_doc<cr>", { silent = true, noremap = true })
