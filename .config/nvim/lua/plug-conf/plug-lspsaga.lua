@@ -1,5 +1,10 @@
 local lspsaga = require("lspsaga")
 lspsaga.setup({ -- defaults ...
+  outline = {
+        keys = {
+            jump = "<CR>", -- Enter キーでジャンプする
+        },
+  },
 	ui = {
 		code_action = "󰌶",
 		diagnostic = "",
@@ -43,7 +48,6 @@ end, { silent = true, noremap = true })
 vim.keymap.set("n", "]E", function()
 	require("lspsaga.diagnostic"):goto_next({ severity = vim.diagnostic.severity.ERROR })
 end, { silent = true, noremap = true })
--- vim.keymap.set("n", "<leader>o", "<cmd>Lspsaga outline<CR>", { silent = true, noremap = true })
 vim.keymap.set("n", "<c-m>", "<cmd>Lspsaga outline<CR>", { silent = true, noremap = true })
 vim.keymap.set("n", "[_Lsp]I", "<cmd>Lspsaga incoming_calls<CR>", { silent = true, noremap = true })
 vim.keymap.set("n", "[_Lsp]O", "<cmd>Lspsaga outgoing_calls<CR>", { silent = true, noremap = true })
