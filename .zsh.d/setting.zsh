@@ -38,6 +38,7 @@ export PATH="$DENO_INSTALL/bin:$PATH"
 
 # alias
 alias vim='nvim'
+alias ls='ls -F'
 alias clip.exe='iconv -t sjis | clip.exe'
 
 # alias poetry='python3 -m poetry'
