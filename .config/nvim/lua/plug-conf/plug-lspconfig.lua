@@ -1,7 +1,7 @@
 -- load lsp setting
 local nvim_lsp = require('lspconfig')
 local mason_lspconfig = require('mason-lspconfig')
-mason_lspconfig.setup_handlers({ 
+mason_lspconfig.setup{ 
 	function(server_name)
 
 	local opts = {}
@@ -16,7 +16,7 @@ mason_lspconfig.setup_handlers({
 	end
 	nvim_lsp[server_name].setup(opts)
 	end 
-})
+}
 
 -- Python Setting
 require("lspconfig").pyright.setup{
