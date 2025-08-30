@@ -16,6 +16,7 @@ vim.keymap.set("n", "<Space>", "<Nop>")
 -- Default fanction
 keymap('n', 'j', 'gj', opts) -- noremap j gj
 keymap('n', 'k', 'gk', opts) -- noremap k gk
+keymap('n', '<leader>x', ':close<CR>', opts)
 
 
 -- inser mode

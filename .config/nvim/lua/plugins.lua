@@ -33,12 +33,21 @@ return {
 		-- "3rd/image.nvim", -- Optional image support in preview window: See `# Preview Mode` for more information
     		}
 	},
+  {'akinsho/git-conflict.nvim', version = "*", config = true},
 	-- UI
 	{
 		'akinsho/toggleterm.nvim',
 		version = "*",
 		config = true
 	},
+  {
+		'anuvyklack/windows.nvim',
+		dependencies = {
+      "anuvyklack/middleclass",
+      "anuvyklack/animation.nvim"
+    }
+
+  },
 	-- lazy.nvim
 	-- {
 	-- 	"folke/noice.nvim",

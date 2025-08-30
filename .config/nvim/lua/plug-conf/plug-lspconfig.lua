@@ -31,3 +31,12 @@ require("lspconfig").pyright.setup{
 		}
 	}
 }
+
+
+nvim_lsp.biome.setup({
+  cmd = { "biome", "lsp-proxy" }, -- biome は `lsp-proxy` サブコマンドで起動する
+  filetypes = { "javascript", "typescript", "json", "jsonc", "markdown" ,  "typescriptreact"},
+  root_dir = nvim_lsp.util.root_pattern("biome.json", "biome.jsonc", ".git"),
+  settings = {},
+})
+

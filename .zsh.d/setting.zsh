@@ -32,9 +32,6 @@ export PATH=$PATH:~/dotfiles/.mybin
 export PATH=$PATH:~/dotfiles/mybin-local/bin
 export PATH=$PATH:~/dotfiles/mybin-local/
 #
-# Deno用
-export DENO_INSTALL="/$HOME/.deno"
-export PATH="$DENO_INSTALL/bin:$PATH"
 
 # alias
 alias vim='nvim'
