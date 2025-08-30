@@ -56,6 +56,7 @@ vim.cmd[[colorscheme vim]]
 -- ]])
 require("plug-conf/plug-vimtex")
 require("plug-conf/plug-transparent")
+require("plug-conf/plug-claudecode")
 
 -- set coloer
 -- vim.cmd[[colorscheme vim]]
