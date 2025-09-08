@@ -1,7 +1,7 @@
 -- load lsp setting
 local nvim_lsp = require('lspconfig')
 local mason_lspconfig = require('mason-lspconfig')
-mason_lspconfig.setup_handlers({ 
+mason_lspconfig.setup{ 
 	function(server_name)
 
 	local opts = {}
@@ -16,7 +16,7 @@ mason_lspconfig.setup_handlers({
 	end
 	nvim_lsp[server_name].setup(opts)
 	end 
-})
+}
 
 -- Python Setting
 require("lspconfig").pyright.setup{
@@ -31,3 +31,12 @@ require("lspconfig").pyright.setup{
 		}
 	}
 }
+
+
+nvim_lsp.biome.setup({
+  cmd = { "biome", "lsp-proxy" }, -- biome は `lsp-proxy` サブコマンドで起動する
+  filetypes = { "javascript", "typescript", "json", "jsonc", "markdown" ,  "typescriptreact"},
+  root_dir = nvim_lsp.util.root_pattern("biome.json", "biome.jsonc", ".git"),
+  settings = {},
+})
+

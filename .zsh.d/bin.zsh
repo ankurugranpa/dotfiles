@@ -75,3 +75,9 @@ function tmux_sync_pain {
 }
 
 autoload -Uz tmux_sync_pain
+
+function serena_mcp {
+  claude mcp add serena --scope project -- uvx --from git+https://github.com/oraios/serena serena start-mcp-server --context ide-assistant --project $(pwd)
+}
+
+autoload -Uz serena_mcp

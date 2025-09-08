@@ -15,18 +15,14 @@ return {
 	-- 		},
 	-- 	},
 	-- },
-  {
-    "xiyaowong/transparent.nvim"
-  },
-  {
-    "lervag/vimtex",
-    lazy = false,     -- we don't want to lazy load VimTeX
-    -- tag = "v2.15", -- uncomment to pin to a specific release
-    init = function()
-      -- VimTeX configuration goes here, e.g.
-      -- vim.g.vimtex_view_method = "zathura"
-    end
-  },
+	{
+	  "xiyaowong/transparent.nvim"
+	},
+	{
+	  "coder/claudecode.nvim",
+	  dependencies = { "folke/snacks.nvim" },
+	  config = true,
+	},
 	{
 		"nvim-neo-tree/neo-tree.nvim",
     		branch = "v3.x",
@@ -37,12 +33,21 @@ return {
 		-- "3rd/image.nvim", -- Optional image support in preview window: See `# Preview Mode` for more information
     		}
 	},
+  {'akinsho/git-conflict.nvim', version = "*", config = true},
 	-- UI
 	{
 		'akinsho/toggleterm.nvim',
 		version = "*",
 		config = true
 	},
+  {
+		'anuvyklack/windows.nvim',
+		dependencies = {
+      "anuvyklack/middleclass",
+      "anuvyklack/animation.nvim"
+    }
+
+  },
 	-- lazy.nvim
 	-- {
 	-- 	"folke/noice.nvim",
@@ -200,17 +205,4 @@ return {
 	    },
 	  },
 	},
-	-- {
-	--     "CopilotC-Nvim/CopilotChat.nvim",
-	--     branch = "canary",
-	--     dependencies = {
-	--       { "zbirenbaum/copilot.lua" }, -- or github/copilot.vim
-	--       { "nvim-lua/plenary.nvim" }, -- for curl, log wrapper
-	--     },
-	--     opts = {
-	--       debug = true, -- Enable debugging
-	--       -- See Configuration section for rest
-	--     },
-	--     -- See Commands section for default commands if you want to lazy load on them
-	-- },
 }

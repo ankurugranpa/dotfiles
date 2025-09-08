@@ -1,6 +1,10 @@
 local opts = { noremap = true, silent = true }
 local keymap = vim.api.nvim_set_keymap
 
+vim.g.mapleader = " "
+vim.keymap.set("n", "<Space>", "<Nop>")
+
+
 -- Modes
 --   normal_mode = 'n',
 --   insert_mode = 'i',
@@ -12,6 +16,7 @@ local keymap = vim.api.nvim_set_keymap
 -- Default fanction
 keymap('n', 'j', 'gj', opts) -- noremap j gj
 keymap('n', 'k', 'gk', opts) -- noremap k gk
+keymap('n', '<leader>x', ':close<CR>', opts)
 
 
 -- inser mode
