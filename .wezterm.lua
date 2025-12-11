@@ -64,9 +64,9 @@ config.keys = {
 
 
 -- Ubuntu 20.04 をデフォルトで起動する
-config.default_domain = 'WSL:Ubuntu-24.04'
-
-config.default_prog = {"/usr/bin/env", "zsh", "-l", "-c", "exec /usr/bin/env zsh"}
+-- config.default_domain = 'WSL:Ubuntu-24.04'
+-- 
+-- config.default_prog = {"/usr/bin/env", "zsh", "-l", "-c", "exec /usr/bin/env zsh"}
 
 -- username は自分のユーザー名に置き換えてください
 

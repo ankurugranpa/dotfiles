@@ -1,4 +1,3 @@
--- load lsp setting
 local nvim_lsp = require('lspconfig')
 local mason_lspconfig = require('mason-lspconfig')
 mason_lspconfig.setup{ 
@@ -18,12 +17,25 @@ mason_lspconfig.setup{
 	end 
 }
 
+
+-- Python の実行パスを `which python` で取得
+local function get_python_path()
+  local handle = io.popen("which python")
+  if handle == nil then return nil end
+  local result = handle:read("*a")
+  handle:close()
+  return result:gsub("%s+", "") -- 改行などを除去
+end
+
+
 -- Python Setting
 require("lspconfig").pyright.setup{
 	settings = {
 		python = {
 			venvPath = ".",
-			pythonPath = "./.venv/bin/python",
+			-- pythonPath = "./.venv/bin/python",
+			-- pythonPath = "/home2/tf/tfx73770/miniconda3/envs/DDPM/bin/python",	
+			pythonPaht = get_python_path(),
 			-- pythonPath = "/usr/local/bin/python",
 			analysis = {
 				extraPaths = {"."}

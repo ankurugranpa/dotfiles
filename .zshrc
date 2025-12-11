@@ -1,3 +1,6 @@
+# 非対話シェルでは何も読み込まない
+[[ $- != *i* ]] && return
+
 ZSH_DIR="${HOME}/.zsh.d"
 
 # .zshがディレクトリで、読み取り、実行、が可能なとき
@@ -11,4 +14,15 @@ fi
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-. "$HOME/.local/bin/env"
+__conda_setup="$('/home2/tf/tfx73770/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/home2/tf/tfx73770/miniconda3/etc/profile.d/conda.sh" ]; then
+        . "/home2/tf/tfx73770/miniconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/home2/tf/tfx73770/miniconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+
