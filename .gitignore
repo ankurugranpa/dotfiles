@@ -39,6 +39,10 @@
 # !/.config/nvim/lua/plugins.lua
 # !/.config/nvim/lua/**
 
+# copilot
+!/.copilot/prompts/
+!/.copilot/**
+
 
 ## global
 !/.mybin/

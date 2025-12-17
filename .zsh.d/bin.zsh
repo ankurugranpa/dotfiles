@@ -81,3 +81,10 @@ function serena_mcp {
 }
 
 autoload -Uz serena_mcp
+
+function copilotfile-gen {
+  mkdir -p "$(pwd)/.copilot/prompts"
+  ln -sfn "$HOME/.copilot/prompts" "$(pwd)/.copilot/prompts"
+}
+
+autoload -Uz copilotfile-gen

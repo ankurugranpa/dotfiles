@@ -5,3 +5,4 @@
 .config
 .tmux.conf
 .wezterm.lua
+.copilot
