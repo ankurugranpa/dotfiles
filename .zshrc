@@ -26,3 +26,14 @@ else
 fi
 unset __conda_setup
 
+export NODEBREW_ROOT=$HOME/.nodebrew
+echo 'export NODEBREW_ROOT=$HOME/.nodebrew' >> ~/.zshrc
+
+# nodebrewのパスを通す
+export NODEBREW_ROOT=$HOME/.nodebrew
+export PATH=$HOME/.nodebrew/current/bin:$PATH
+export NODEBREW_ROOT=$HOME/.nodebrew
+
+# XDG_RUNTIME_DIRを設定
+export NODEBREW_ROOT=$HOME/.nodebrew
+export XDG_RUNTIME_DIR=/tmp/runtime-$USER
