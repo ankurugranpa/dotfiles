@@ -29,7 +29,7 @@ require("lazy").setup(plugins)
 
 require("plug-conf/plug-cmp")
 require("plug-conf/plug-mason")
-require("plug-conf/plug-lspconfig")
+-- require("plug-conf/plug-lspconfig")
 require("plug-conf/plug-lualine")
 require("plug-conf/plug-lspsaga")
 -- require("plug-conf/plug-tokyonight")
@@ -58,6 +58,7 @@ vim.cmd[[colorscheme vim]]
 require("plug-conf/plug-vimtex")
 require("plug-conf/plug-transparent")
 require("plug-conf/plug-claudecode")
+require("plug-conf/plug-codecompanion")
 
 -- set coloer
 -- vim.cmd[[colorscheme vim]]

@@ -110,24 +110,105 @@ return {
 	},
 	{
 		"williamboman/mason.nvim",
+    config = function()
+      require("mason").setup()
+    end,
 -- 		cmd = { "Mason", "MasonInstall" },
 --		build = ":MasonUpdate",
 -- 		event = "VimEnter",
 		-- event = { "BufReadPre", "VimEnter" },
 	},
-	{
-		"williamboman/mason-lspconfig.nvim",
---		event = "BufReadPre", 
-		-- build = ":MasonUpdate",
-		-- cmd = {
-		--     "Mason",
-		--     "MasonInstall",
-		--     "MasonUninstall",
-		--     "MasonUninstallAll",
-		--     "MasonLog",
-		--     "MasonUpdate",
-		--   },
-	},
+	-- lua/plugins/mason-lspconfig.lua
+{
+  "williamboman/mason-lspconfig.nvim",
+  dependencies = {
+    "williamboman/mason.nvim",
+    "neovim/nvim-lspconfig",
+  },
+  config = function()
+    local function on_attach(_, bufnr)
+      local bufopts = { silent = true, buffer = bufnr }
+      vim.keymap.set("n", "K", vim.lsp.buf.hover, bufopts)
+      vim.keymap.set("n", "gi", vim.lsp.buf.implementation, bufopts)
+      vim.keymap.set("n", "gtD", vim.lsp.buf.type_definition, bufopts)
+      vim.keymap.set("n", "grf", vim.lsp.buf.references, bufopts)
+      vim.keymap.set("n", "<space>p", function()
+        vim.lsp.buf.format({ async = true })
+      end, bufopts)
+    end
+
+    local function get_python_path()
+      local handle = io.popen("which python")
+      if not handle then return nil end
+      local result = handle:read("*a")
+      handle:close()
+      return result:gsub("%s+", "")
+    end
+
+    require("mason-lspconfig").setup({
+      handlers = {
+        function(server_name)
+          vim.lsp.config(server_name, {
+            on_attach = on_attach,
+          })
+        end,
+
+        -- 個別上書き（pyright）
+        pyright = function()
+          vim.lsp.config("pyright", {
+            on_attach = on_attach,
+            settings = {
+              python = {
+                venvPath = ".",
+                pythonPath = get_python_path(),
+                analysis = {
+                  extraPaths = { "." },
+                },
+              },
+            },
+          })
+        end,
+
+        -- biome
+        biome = function()
+          vim.lsp.config("biome", {
+            on_attach = on_attach,
+            cmd = { "biome", "lsp-proxy" },
+            filetypes = {
+              "javascript",
+              "typescript",
+              "typescriptreact",
+              "json",
+              "jsonc",
+              "markdown",
+            },
+            root_dir = function(fname)
+              return vim.fs.root(fname, {
+                "biome.json",
+                "biome.jsonc",
+                ".git",
+              })
+            end,
+          })
+        end,
+      },
+    })
+  end,
+},
+	-- {
+	-- 	"williamboman/mason-lspconfig.nvim",
+	-- 	version = "*",
+--	-- 	event = "BufReadPre", 
+	-- 	-- build = ":MasonUpdate",
+	-- 	-- cmd = {
+	-- 	--     "Mason",
+	-- 	--     "MasonInstall",
+	-- 	--     "MasonUninstall",
+	-- 	--     "MasonUninstallAll",
+	-- 	--     "MasonLog",
+	-- 	--     "MasonUpdate",
+	-- 	--   },
+	-- },
 	{
 		"hrsh7th/nvim-cmp",
 		event = "VimEnter",
@@ -214,17 +295,14 @@ return {
 	  {
 	    "mfussenegger/nvim-dap-python"
 	  },
-		-- {
-		--     "CopilotC-Nvim/CopilotChat.nvim",
-		--     branch = "canary",
-		--     dependencies = {
-		--       { "zbirenbaum/copilot.lua" }, -- or github/copilot.vim
-		--       { "nvim-lua/plenary.nvim" }, -- for curl, log wrapper
-		--     },
-		--     opts = {
-		--       debug = true, -- Enable debugging
-		--       -- See Configuration section for rest
-		--     },
-		--     -- See Commands section for default commands if you want to lazy load on them
-		-- },
+    {
+    "olimorris/codecompanion.nvim",
+      opts = {},
+        dependencies = {
+          "nvim-lua/plenary.nvim",
+        },
+    },
+    {
+      "github/copilot.vim",
+    }
 	}

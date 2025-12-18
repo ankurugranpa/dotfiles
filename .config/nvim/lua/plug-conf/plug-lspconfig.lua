@@ -1,54 +1,117 @@
-local nvim_lsp = require('lspconfig')
-local mason_lspconfig = require('mason-lspconfig')
-mason_lspconfig.setup{ 
-	function(server_name)
-
-	local opts = {}
-	opts.on_attach = function(_, bufnr)
-
-	local bufopts = { silent = true, buffer = bufnr }
-	vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
-	vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)
-	vim.keymap.set('n', 'gtD', vim.lsp.buf.type_definition, bufopts)
-	vim.keymap.set('n', 'grf', vim.lsp.buf.references, bufopts)
-	vim.keymap.set('n', '<space>p', vim.lsp.buf.format, bufopts)
-	end
-	nvim_lsp[server_name].setup(opts)
-	end 
-}
-
-
--- Python の実行パスを `which python` で取得
-local function get_python_path()
-  local handle = io.popen("which python")
-  if handle == nil then return nil end
-  local result = handle:read("*a")
-  handle:close()
-  return result:gsub("%s+", "") -- 改行などを除去
-end
-
-
--- Python Setting
-require("lspconfig").pyright.setup{
-	settings = {
-		python = {
-			venvPath = ".",
-			-- pythonPath = "./.venv/bin/python",
-			-- pythonPath = "/home2/tf/tfx73770/miniconda3/envs/DDPM/bin/python",	
-			pythonPaht = get_python_path(),
-			-- pythonPath = "/usr/local/bin/python",
-			analysis = {
-				extraPaths = {"."}
-			}
-		}
-	}
-}
-
-
-nvim_lsp.biome.setup({
-  cmd = { "biome", "lsp-proxy" }, -- biome は `lsp-proxy` サブコマンドで起動する
-  filetypes = { "javascript", "typescript", "json", "jsonc", "markdown" ,  "typescriptreact"},
-  root_dir = nvim_lsp.util.root_pattern("biome.json", "biome.jsonc", ".git"),
-  settings = {},
-})
-
+-- local mason_lspconfig = require("mason-lspconfig")
+-- 
+-- local function on_attach(_, bufnr)
+--   local bufopts = { silent = true, buffer = bufnr }
+-- 
+--   vim.keymap.set("n", "K", vim.lsp.buf.hover, bufopts)
+--   vim.keymap.set("n", "gi", vim.lsp.buf.implementation, bufopts)
+--   vim.keymap.set("n", "gtD", vim.lsp.buf.type_definition, bufopts)
+--   vim.keymap.set("n", "grf", vim.lsp.buf.references, bufopts)
+--   vim.keymap.set("n", "<space>p", function()
+--     vim.lsp.buf.format({ async = true })
+--   end, bufopts)
+-- end
+-- 
+-- local function get_python_path()
+--   local handle = io.popen("which python")
+--   if not handle then return nil end
+--   local result = handle:read("*a")
+--   handle:close()
+--   return result:gsub("%s+", "")
+-- end
+-- 
+-- mason_lspconfig.setup_handlers({
+--   function(server_name)
+--     vim.lsp.config(server_name, {
+--       on_attach = on_attach,
+--     })
+--   end,
+-- })
+-- 
+-- vim.lsp.config("pyright", {
+--   on_attach = on_attach,
+--   settings = {
+--     python = {
+--       venvPath = ".",
+--       pythonPath = get_python_path(),
+--       analysis = {
+--         extraPaths = { "." },
+--       },
+--     },
+--   },
+-- })
+-- 
+-- vim.lsp.config("biome", {
+--   on_attach = on_attach,
+--   cmd = { "biome", "lsp-proxy" },
+--   filetypes = {
+--     "javascript",
+--     "typescript",
+--     "typescriptreact",
+--     "json",
+--     "jsonc",
+--     "markdown",
+--   },
+--   root_dir = function(fname)
+--     return vim.fs.root(fname, {
+--       "biome.json",
+--       "biome.jsonc",
+--       ".git",
+--     })
+--   end,
+-- })
+-- 
+-- -- local nvim_lsp = require('lspconfig')
+-- -- local mason_lspconfig = require('mason-lspconfig')
+-- -- mason_lspconfig.setup{ 
+-- -- 	function(server_name)
+-- -- 
+-- -- 	local opts = {}
+-- -- 	opts.on_attach = function(_, bufnr)
+-- -- 
+-- -- 	local bufopts = { silent = true, buffer = bufnr }
+-- -- 	vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
+-- -- 	vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)
+-- -- 	vim.keymap.set('n', 'gtD', vim.lsp.buf.type_definition, bufopts)
+-- -- 	vim.keymap.set('n', 'grf', vim.lsp.buf.references, bufopts)
+-- -- 	vim.keymap.set('n', '<space>p', vim.lsp.buf.format, bufopts)
+-- -- 	end
+-- -- 	nvim_lsp[server_name].setup(opts)
+-- -- 	end 
+-- -- }
+-- -- 
+-- -- 
+-- -- -- Python の実行パスを `which python` で取得
+-- -- local function get_python_path()
+-- --   local handle = io.popen("which python")
+-- --   if handle == nil then return nil end
+-- --   local result = handle:read("*a")
+-- --   handle:close()
+-- --   return result:gsub("%s+", "") -- 改行などを除去
+-- -- end
+-- -- 
+-- -- 
+-- -- -- Python Setting
+-- -- require("lspconfig").pyright.setup{
+-- -- 	settings = {
+-- -- 		python = {
+-- -- 			venvPath = ".",
+-- -- 			-- pythonPath = "./.venv/bin/python",
+-- -- 			-- pythonPath = "/home2/tf/tfx73770/miniconda3/envs/DDPM/bin/python",	
+-- -- 			pythonPaht = get_python_path(),
+-- -- 			-- pythonPath = "/usr/local/bin/python",
+-- -- 			analysis = {
+-- -- 				extraPaths = {"."}
+-- -- 			}
+-- -- 		}
+-- -- 	}
+-- -- }
+-- -- 
+-- -- 
+-- -- nvim_lsp.biome.setup({
+-- --   cmd = { "biome", "lsp-proxy" }, -- biome は `lsp-proxy` サブコマンドで起動する
+-- --   filetypes = { "javascript", "typescript", "json", "jsonc", "markdown" ,  "typescriptreact"},
+-- --   root_dir = nvim_lsp.util.root_pattern("biome.json", "biome.jsonc", ".git"),
+-- --   settings = {},
+-- -- })
+-- -- 
