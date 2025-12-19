@@ -82,9 +82,16 @@ function serena_mcp {
 
 autoload -Uz serena_mcp
 
-function copilotfile-gen {
-  mkdir -p "$(pwd)/.copilot/prompts"
-  ln -sfn "$HOME/.copilot/prompts" "$(pwd)/.copilot/prompts"
+function copilotfile-gen() {
+  local dst="$(pwd)/.copilot/prompts"
+  local src="$HOME/.copilot/prompts"
+
+  mkdir -p "$dst"
+
+  for f in "$src"/*; do
+    ln -sfn "$f" "$dst/$(basename "$f")"
+  done
 }
+
 
 autoload -Uz copilotfile-gen
