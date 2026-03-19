@@ -2,6 +2,10 @@
 *
 !*/
 
+# copilot
+!/.copilot/prompts/
+!/.copilot/**
+
 ## zsh
 !/.zshrc
 !/.zsh.d/
