@@ -1,155 +1,196 @@
 local wezterm = require 'wezterm'
+local act = wezterm.action
+local mux = wezterm.mux
 
+--------------------------------------------------
+-- config builder
+--------------------------------------------------
 local config = {}
-
-
 if wezterm.config_builder then
-	  config = wezterm.config_builder()
+  config = wezterm.config_builder()
 end
--- カラースキーム
+
+--------------------------------------------------
+-- Appearance
+--------------------------------------------------
 config.color_scheme = 'MaterialDesignColors'
-
--- 背景透過
 config.window_background_opacity = 0.8
+config.audible_bell = "Disabled"
 
+config.font = wezterm.font(
+  "HackGen Console NF Regular",
+  { weight = "Medium", stretch = "Normal", style = "Normal" }
+)
+config.font_size = 14
+
+--------------------------------------------------
+-- Tab bar
+--------------------------------------------------
+config.show_new_tab_button_in_tab_bar = false
+config.hide_tab_bar_if_only_one_tab = true
+config.colors = {
+  tab_bar = {
+    inactive_tab_edge = "none",
+  },
+}
+
+--------------------------------------------------
+-- Startup: fullscreen
+--------------------------------------------------
+wezterm.on("gui-startup", function(cmd)
+  local tab, pane, window = mux.spawn_window(cmd or {})
+  window:gui_window():toggle_fullscreen()
+end)
+
+--------------------------------------------------
+-- Opacity control events
+--------------------------------------------------
 wezterm.on("decrease-opacity", function(window)
-    local overrides = window:get_config_overrides() or {}
-    if not overrides.window_background_opacity then
-        overrides.window_background_opacity = 1.0
-    end
-    overrides.window_background_opacity = overrides.window_background_opacity - 0.1
-    if overrides.window_background_opacity < 0.1 then
-        overrides.window_background_opacity = 0.1
-    end
-    window:set_config_overrides(overrides)
+  local overrides = window:get_config_overrides() or {}
+  overrides.window_background_opacity =
+    math.max((overrides.window_background_opacity or 1.0) - 0.1, 0.1)
+  window:set_config_overrides(overrides)
 end)
 
 wezterm.on("increase-opacity", function(window)
-    local overrides = window:get_config_overrides() or {}
-    if not overrides.window_background_opacity then
-        overrides.window_background_opacity = 1.0
-    end
-    overrides.window_background_opacity = overrides.window_background_opacity + 0.1
-    if overrides.window_background_opacity > 1.0 then
-        overrides.window_background_opacity = 1.0
-    end
-    window:set_config_overrides(overrides)
+  local overrides = window:get_config_overrides() or {}
+  overrides.window_background_opacity =
+    math.min((overrides.window_background_opacity or 1.0) + 0.1, 1.0)
+  window:set_config_overrides(overrides)
 end)
 
+--------------------------------------------------
+-- Split Window function
+--------------------------------------------------
+local function split_with_cwd(split_action)
+  return wezterm.action_callback(function(window, pane)
+    local cwd = pane:get_current_working_dir()
 
-config.show_new_tab_button_in_tab_bar = false -- tab barの+ボタン消す
-config.hide_tab_bar_if_only_one_tab = true -- tab bar消す(1つの時のみ)
--- config.show_close_tab_button_in_tabs = false -- tabの閉じるボタン非表示
-config.colors = {
-   tab_bar = {
-     inactive_tab_edge = "none",
-   },
+    if cwd then
+      -- Windows パスが混ざったら捨てる
+      if cwd.file_path:match("^/C:") or cwd.file_path:match("^C:") then
+        cwd = nil
+      else
+        cwd = cwd.file_path
+      end
+    end
+
+    window:perform_action(
+      split_action {
+        domain = "CurrentPaneDomain",
+        cwd = cwd,
+      },
+      pane
+    )
+  end)
+end
+
+
+
+--------------------------------------------------
+-- Leader key
+--------------------------------------------------
+config.leader = {
+  key = 'b',
+  mods = 'CTRL',
+  timeout_milliseconds = 1000,
 }
 
-
--- フルスクリーン起動
-local mux = wezterm.mux
-wezterm.on("gui-startup", function(cmd)
-    local tab, pane, window = mux.spawn_window(cmd or {})
-    window:gui_window():toggle_fullscreen()
-end)
-
-config.font = wezterm.font("HackGen Console NF Regular", {weight="Medium", stretch="Normal", style="Normal"}) -- フォントの設定
-config.font_size = 14
-
-
-config.audible_bell = "Disabled" -- ベル通知の設定
-
--- LEADERキーの設定
-config.leader = { key = 'b', mods = 'CTRL', timeout_milliseconds = 1000 }
--- ショートカットキー設定
-local act = wezterm.action
+--------------------------------------------------
+-- Key bindings
+--------------------------------------------------
 config.keys = {
-  -- 透明度の切り替え
-  { key = "1", mods = 'LEADER', action = wezterm.action { EmitEvent = "decrease-opacity" }, },
-  { key = "2", mods = 'LEADER', action = wezterm.action { EmitEvent = "increase-opacity" }, },
-  -- フルスクリーン切り替え
-  { key = "f", mods = 'SHIFT|META', action = wezterm.action.ToggleFullScreen, },
-  -- 新しいタブを作成
-  { key = "t", mods = 'SHIFT|CTRL', action = act.SpawnTab 'CurrentPaneDomain',},
-  -- (LEADER+|で)新しいペイン(縦)を作成
-  { key = "\\", mods = 'LEADER', action = wezterm.action.SplitHorizontal { domain = 'CurrentPaneDomain' },},
-  -- (LEADER+-で)新しいペイン(横)を作成
-  { key = "-", mods = 'LEADER',  action = wezterm.action.SplitVertical { domain = 'CurrentPaneDomain' },},
-  -- 現在のペインを閉じる
-  { key = "x", mods = 'LEADER', action = wezterm.action.CloseCurrentPane { confirm = true },},
-  { key = "z", mods = 'LEADER', action = wezterm.action.TogglePaneZoomState, },
-  -- ペインの移動
-  { key = "h", mods = "LEADER", action = act.ActivatePaneDirection("Left") },
-  { key = "l", mods = "LEADER", action = act.ActivatePaneDirection("Right") },
-  { key = "k", mods = "LEADER", action = act.ActivatePaneDirection("Up") },
-  { key = "j", mods = "LEADER", action = act.ActivatePaneDirection("Down") },
-  -- ペインのサイズ変更
-  { key = "H", mods = 'LEADER', action = act.AdjustPaneSize { 'Left', 5 },},
-  { key = "J", mods = 'LEADER', action = act.AdjustPaneSize { 'Down', 5 } },
-  { key = "K", mods = 'LEADER', action = act.AdjustPaneSize { 'Up', 5 } },
-  { key = "L", mods = 'LEADER', action = act.AdjustPaneSize { 'Right', 5 } },
-  -- フォントサイズの変更
-  { key = "+",  mods = "CTRL",  action = wezterm.action.IncreaseFontSize },
-  { key = "-",  mods = "CTRL",  action = wezterm.action.DecreaseFontSize },
-  -- コピーモード
-  { key = "[",  mods = 'LEADER',action = wezterm.action.ActivateCopyMode },
-  -- コピペの設定
-  { key = "v", mods = "CTRL", action = act.PasteFrom("Clipboard") },
-  -- workspace setting
-  { key = 's', mods = 'LEADER', action = act.ShowLauncherArgs { flags = 'WORKSPACES' , title = "Select workspace" },},
-  -- 起動menu
-  { key = "m", mods = 'LEADER', action = wezterm.action.ShowLauncher, },
-}
+  -- opacity
+  { key = "1", mods = "LEADER", action = act.EmitEvent "decrease-opacity" },
+  { key = "2", mods = "LEADER", action = act.EmitEvent "increase-opacity" },
 
--- config.SpawnCommandInNewWindow{
---     {
---       label = "WSL2",
---       args = {"wsl.exe"},
---     },
---     {
---       label = "PowerShell",
---       args = {"powershell.exe"},
---     },
---     {
---       label = "Custom Directory",
---       cwd = "C:\\path\\to\\directory",
---       args = {"powershell.exe"},
---     },
--- }
+  -- fullscreen
+  { key = "f", mods = "SHIFT|META", action = act.ToggleFullScreen },
 
-config.launch_menu = {
-   {
-     label = 'pshell',
-     args = { 'powershell.exe' , '-NoLogo' },
-   },
-}
+  -- tabs
+  { key = "t", mods = "SHIFT|CTRL", action = act.SpawnTab "CurrentPaneDomain" },
 
--- config.default_domain = "powershell.exe"
-config.default_prog = { 'pwsh.exe', '-NoLogo' }
+  -- split panes
+  -- { key = "\\", mods = "LEADER", action = act.SplitHorizontal { domain = "CurrentPaneDomain" } },
+  -- { key = "-",  mods = "LEADER", action = act.SplitVertical   { domain = "CurrentPaneDomain" } },
+  { key = "\\", mods = "LEADER", action = split_with_cwd(act.SplitHorizontal) },
+  { key = "-",  mods = "LEADER", action = split_with_cwd(act.SplitVertical) },
 
 
+  -- close / zoom
+  { key = "x", mods = "LEADER", action = act.CloseCurrentPane { confirm = true } },
+  { key = "z", mods = "LEADER", action = act.TogglePaneZoomState },
 
--- Ubuntu 20.04 をデフォルトで起動する
--- config.default_domain = 'WSL:Ubuntu-24.04'
--- 
--- config.default_prog = {"/usr/bin/env", "zsh", "-l", "-c", "exec /usr/bin/env zsh"}
+  -- pane navigation
+  { key = "h", mods = "LEADER", action = act.ActivatePaneDirection "Left" },
+  { key = "j", mods = "LEADER", action = act.ActivatePaneDirection "Down" },
+  { key = "k", mods = "LEADER", action = act.ActivatePaneDirection "Up" },
+  { key = "l", mods = "LEADER", action = act.ActivatePaneDirection "Right" },
 
--- username は自分のユーザー名に置き換えてください
+  -- pane resize
+  { key = "H", mods = "LEADER", action = act.AdjustPaneSize { "Left", 5 } },
+  { key = "J", mods = "LEADER", action = act.AdjustPaneSize { "Down", 5 } },
+  { key = "K", mods = "LEADER", action = act.AdjustPaneSize { "Up", 5 } },
+  { key = "L", mods = "LEADER", action = act.AdjustPaneSize { "Right", 5 } },
 
--- config.default_cwd = "/home/ahahahaha"
+  -- font size
+  { key = "+", mods = "CTRL", action = act.IncreaseFontSize },
+  { key = "-", mods = "CTRL", action = act.DecreaseFontSize },
 
-config.ssh_domains = {
-    {
-      name = "yzgpu",
-      remote_address = "yzaidgpus.yz.yamagata-u.ac.jp",
-      multiplexing = "WezTerm",
-      username = "tfx73770"
-      -- remote_wezterm_path = "/home/tfx73770/.local/bin/wezterm",
+  -- copy / paste
+  { key = "[", mods = "LEADER", action = act.ActivateCopyMode },
+  { key = "v", mods = "CTRL", action = act.PasteFrom "Clipboard" },
+
+  -- launcher / workspace
+  { key = "m", mods = "LEADER", action = act.ShowLauncher },
+  { key = "s", mods = "LEADER", action = act.ShowLauncherArgs {
+      flags = "WORKSPACES",
+      title = "Select workspace",
     },
+  },
 }
-  -- a
-  -- config.default_prog = { "wezterm" },
-  -- config.default_domain = "Local",
 
+--------------------------------------------------
+-- Default: WSL
+--------------------------------------------------
+-- config.default_domain = "WSL:Ubuntu-22.04"
+-- config.default_prog = { "/usr/bin/env", "zsh", "-l" }
+
+config.default_prog = { "pwsh.exe", "-NoLogo" }
+
+
+--------------------------------------------------
+-- Launch menu (select shell)
+--------------------------------------------------
+config.launch_menu = {
+  {
+    label = "WSL (Ubuntu 22.04)",
+    domain = { DomainName = "WSL:Ubuntu-22.04" },
+  },
+  {
+    label = "PowerShell (pwsh)",
+    args = { "pwsh.exe", "-NoLogo" },
+  },
+  {
+    label = "Windows PowerShell",
+    args = { "powershell.exe", "-NoLogo" },
+  },
+}
+
+--------------------------------------------------
+-- SSH domains
+--------------------------------------------------
+config.ssh_domains = {
+  {
+    name = "yzgpu",
+    remote_address = "yzaidgpus.yz.yamagata-u.ac.jp",
+    username = "tfx73770",
+    multiplexing = "WezTerm",
+  },
+}
+
+--------------------------------------------------
+-- Done
+--------------------------------------------------
 return config
+
