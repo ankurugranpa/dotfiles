@@ -28,6 +28,8 @@
 ## config
 !/.config/nvim/
 !/.config/nvim/**
+!/.config/tmux/
+!/.config/tmux/**
 # !/.config
 # !/.config/nvim/_init.vim
 # !/.config/nvim/init.lua
